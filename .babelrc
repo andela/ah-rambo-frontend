@@ -1,0 +1,32 @@
+{
+  "presets": [
+    "@babel/preset-react",
+    [
+      "@babel/preset-env",
+      {
+        "targets":{
+          "node":"current"
+        }
+      }
+    ],
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        ["@babel/plugin-proposal-class-properties", { "loose": true }],
+        "@babel/plugin-transform-runtime"
+      ]
+    },
+    "test": {
+      "plugins": [
+        ["@babel/plugin-proposal-class-properties", { "loose": true }],
+        "@babel/plugin-transform-runtime",
+      ]
+    },
+    "production": {
+      "plugins": [
+        "@babel/runtime",
+      ]
+    }
+  }
+}
