@@ -1,6 +1,5 @@
 /node_modules
-
 /build
-
+test_reports/
 .vscode
 .DS_Store
