@@ -1,8 +1,10 @@
-import {BrowserRouter} from 'react-router-dom';
-import Router from './components/Router';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './components/App';
 
-const App = () => (
-  <BrowserRouter>
-    <Router />
-  </BrowserRouter>
-);
+const root = document.getElementById('root');
+ReactDOM.render(<App />, root);
+
+if (process.env.NODE_ENV !== 'production' && module.hot) {
+  module.hot.accept('./components/App');
+}
