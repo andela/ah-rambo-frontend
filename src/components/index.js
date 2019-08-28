@@ -1,5 +1,5 @@
-import Login from './login';
-import NotFound from './Notfound';
+import Login from './Login/login';
+import NotFound from './NotFound/Notfound';
 import Home from './Home/Home';
 
 export {
