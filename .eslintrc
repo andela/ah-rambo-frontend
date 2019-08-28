@@ -26,7 +26,6 @@
     "no-tabs": 0,
     "react/jsx-filename-extension": 0,
     "curly": ["error", "multi-line"],
-    "import/no-unresolved": 0,
     "react/no-unknown-property": [2, {"ignore": ["class", "for"]}],
     "no-shadow": ["error", { "allow": ["req", "res", "err"] }],
     "valid-jsdoc": ["error", {

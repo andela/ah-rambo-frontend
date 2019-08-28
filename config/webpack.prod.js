@@ -1,9 +1,10 @@
+require('dotenv').config();
 const merge = require('webpack-merge');
-const Dotenv = require('dotenv-webpack');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const Webpack = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const commonConfig = require('./webpack.common');
+
 
 module.exports = merge(commonConfig, {
   bail: true,
@@ -12,9 +13,7 @@ module.exports = merge(commonConfig, {
 
   plugins: [
     new CleanWebpackPlugin(),
-    new Dotenv({
-      path: './.env.production',
-    })
+    new Webpack.EnvironmentPlugin(['SOME_VARIABLES'])
   ],
 
   optimization: {

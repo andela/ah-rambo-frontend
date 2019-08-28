@@ -8,9 +8,8 @@ test_reports/
 /build
 
 
-# Environment Files
-.env.development
-.env.production
+# Environment File
+.env
 
 #Others
 .vscode
