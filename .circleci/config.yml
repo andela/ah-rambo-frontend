@@ -2,6 +2,8 @@ version: 2
 jobs:
   build:
     working_directory: ~/ah-rambo-frontend
+    environment:
+      CC_TEST_REPORTER_ID: 36d0eedfccae6543074d8efd8324aa9b2f17f879cc5fa132d6119e12070d7621
 
     docker:
       - image: circleci/node:10
@@ -24,5 +26,21 @@ jobs:
             - ./node_modules
 
       - run:
-          name: Run Test
+          name: Run Tests
           command: npm test -- --runInBand --ci
+      - store_artifacts:
+          path: coverage
+
+
+      - run:
+          name: Setup Code Climate test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+
+      - run:
+          name: Send Test Report to Code Climate
+          command: |
+            ./cc-test-reporter before-build
+            ./cc-test-reporter after-build
+
