@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "jest --coverage",
     "test:e2e": "nightwatch"
   },
   "repository": {
@@ -35,6 +36,7 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
+    "jest": "^24.9.0",
     "nightwatch": "^1.2.1",
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.7",
