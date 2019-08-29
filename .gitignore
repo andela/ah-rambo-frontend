@@ -9,9 +9,9 @@ test_reports/
 
 
 # Environment Files
-.env.development
-.env.production
+.env
 
 #Others
 .vscode
 .DS_Store
+.coveralls.yml
