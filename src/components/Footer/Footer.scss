@@ -1,0 +1,137 @@
+@import '../../styles/variables.scss';
+
+.facebook-icon {
+  height: 13px;
+  padding-right: 3px;
+}
+
+.google-icon {
+  height: 15px;
+  margin: -1px;
+  padding-right: 3px;
+}
+
+.twitter-icon {
+  margin: -2px;
+  height: 18px;
+}
+
+.footer__contact-info {
+  display: flex;
+  align-items: center;
+  font-size: 6px;
+}
+
+.footer__contact-icon {
+  margin: inherit;
+  padding: 2px;
+  display: flex;
+  align-items: flex-end;
+  text-decoration: none;
+}
+
+.footer__mail-icon {
+  height: 19px;
+}
+
+.footer__copyright-info {
+  color: $mustardColor;
+  font-size: 7px;
+  align-self: center;
+  padding-right: 8%;
+}
+
+.footer__email {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  text-decoration: underline;
+}
+
+.footer__follow-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 7px;
+}
+
+p {
+  margin: inherit;
+  text-decoration: underline;
+}
+
+.footer__social-icons {
+  margin: inherit;
+}
+
+@media (min-width: 425px) {
+  .footer__contact-info {
+    font-size: 8px;
+  }
+  .footer__copyright-info,
+  .footer__follow-info {
+    font-size: 10px;
+  }
+  .footer__contact-icon {
+    padding: 7px 4px 0 0;
+  }
+  .footer__social-icons {
+    padding-top: 2px;
+  }
+  .facebook-icon,
+  .google-icon {
+    padding-right: 11px;
+  }
+}
+
+@media (min-width: 768px) {
+  .footer__copyright-info,
+  .footer__follow-info,
+  .footer__contact-info {
+    font-size: 14px;
+  }
+  .footer__mail-icon {
+    height: 25px;
+  }
+  .footer__contact-icon {
+    padding: 14px 7px 0 0;
+  }
+  .facebook-icon {
+    height: 18px;
+    padding-right: 15px;
+  }
+  .google-icon {
+    height: 21px;
+    padding-right: 15px;
+  }
+  .twitter-icon {
+    height: 26px;
+    margin: -3px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer__copyright-info,
+  .footer__follow-info,
+  .footer__contact-info {
+    font-size: 16px;
+  }
+  .footer__mail-icon {
+    height: 31px;
+  }
+  .footer__contact-icon {
+    padding: 14px 9px 0 0;
+  }
+  .facebook-icon {
+    height: 20px;
+    padding-right: 17px;
+  }
+  .google-icon {
+    height: 24px;
+    padding-right: 17px;
+  }
+  .twitter-icon {
+    height: 30px;
+    margin: -3px;
+  }
+}

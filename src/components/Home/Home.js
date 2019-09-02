@@ -1,14 +1,12 @@
 import React from 'react';
 import './Home.scss';
 
-
 const Home = () => (
-  <div className="test">
-      welcome to the Home page
-    <br />
-    <div className="btn">
-        button test
-    </div>
+  <div className="container">
+    <main>
+      <p>welcome to the Home page</p>
+      <div className="btn">Button</div>
+    </main>
   </div>
 );
 export default Home;
