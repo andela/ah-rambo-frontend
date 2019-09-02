@@ -1,0 +1,10 @@
+version: "2"
+
+exclude_patterns:
+- "**/*.spec.js"
+- "**/*.test.js"
+- "e2e-tests/"
+- "jestConfig/"
+- "webpackConfig/"
+
+
