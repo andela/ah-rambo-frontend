@@ -1,7 +1,6 @@
 import Login from './login';
 
 describe('Login component ', () => {
-
   it('renders component successfully', () => {
     const wrapper = shallow(<Login />);
     expect(wrapper.find('div')).toHaveLength(1);

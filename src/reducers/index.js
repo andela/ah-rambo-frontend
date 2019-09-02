@@ -1,5 +1,6 @@
-import validate from './validate';
+import { combineReducers } from 'redux';
+import profile from './profile';
 
-export default {
-  validate
-};
+export default combineReducers({
+  profile
+});
