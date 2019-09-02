@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import moxios from 'moxios';
 import thunk from 'redux-thunk';
 import getUserDetails from './getUserDetails';
-import { GET_USER_SUCCESS, GET_USER_FAILURE } from '../../actionTypes';
+import { AUTHENTICATE_USER, DEAUTHENTICATE_USER } from '../../actionTypes';
 
 describe('Get user details action Test', () => {
   beforeEach(() => {
@@ -16,7 +16,7 @@ describe('Get user details action Test', () => {
   const middleware = [thunk];
   const mockStore = configureMockStore(middleware);
 
-  it('dispatch getUserDetails function when it mounts', () => {
+  it('dispatch getUserDetails action sucessfully', () => {
     const store = mockStore({});
     const expectedState = {
       firstName: 'John',
@@ -34,11 +34,11 @@ describe('Get user details action Test', () => {
 
     return store.dispatch(getUserDetails()).then(() => {
       const actions = store.getActions();
-      expect(actions[1].type).toBe(GET_USER_SUCCESS);
+      expect(actions[1].type).toBe(AUTHENTICATE_USER);
     });
   });
 
-  it('dispatch getUserProfile and fails to get user when it mounts', () => {
+  it('dispatch getUserProfile failure ', () => {
     const store = mockStore({});
     const expectedState = {
       firstName: 'John',
@@ -56,7 +56,7 @@ describe('Get user details action Test', () => {
 
     return store.dispatch(getUserDetails()).then(() => {
       const actions = store.getActions();
-      expect(actions[1].type).toBe(GET_USER_FAILURE);
+      expect(actions[1].type).toBe(DEAUTHENTICATE_USER);
     });
   });
 });

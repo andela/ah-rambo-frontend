@@ -1,11 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import {
-<<<<<<< HEAD
-  Login, NotFound, Home, Signup, ResetPassword, RequestPassword
-=======
   Login, NotFound, Home, Signup, ResetPassword, RequestPassword, UserProfile
->>>>>>> feature - [#167190490]:Implement Forgot Password Page (#18)
 } from './index';
 const Router = () => (
   <Switch>

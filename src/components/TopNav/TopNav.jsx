@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './TopNav.scss';
+import { clearFromStorage } from '../../helpers/storageHelper';
 
-const TopNav = ({ user }) => (
+const TopNav = ({ user, isAuthenticated, deAuthUser }) => (
   <nav className="Header__nav">
     <ul className="Header__nav__list">
-      {Object.keys(user).length ? (
+      {Object.keys(user).length && isAuthenticated ? (
         <>
           <li className="Header__nav__item user">
             <Link to="/profile">
@@ -14,7 +15,7 @@ const TopNav = ({ user }) => (
             </Link>
           </li>
           <li className="Header__nav__item logout">
-            <Link to="/login">Logout</Link>
+            <Link to="/login"><span onClick={() => { deAuthUser(); clearFromStorage(); }}>Logout</span></Link>
           </li>
         </>
       ) : (
@@ -33,6 +34,8 @@ const TopNav = ({ user }) => (
 
 TopNav.propTypes = {
   user: PropTypes.object,
+  deAuthUser: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired
 };
 
 

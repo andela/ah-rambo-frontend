@@ -66,7 +66,7 @@ afterEach(() => {
 });
 
 describe('Get user action test', () => {
-  it('dispatch an action for getting user articles', async () => {
+  it('dispatch a success action for getting user articles', async () => {
     const expectedAction = [
       { type: 'GET_USER_ARTICLES_REQUEST' },
       { type: 'GET_USER_ARTICLES_SUCCESS', articles: userArticleDetails }

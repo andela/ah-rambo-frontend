@@ -5,30 +5,7 @@ import {
   AlarmIcon
 } from '../../../assets/icons';
 
-export const dashBoardNavItems = [
-  {
-    text: 'Posts',
-    link: '/',
-    style: 'dashboard__navItem--focus'
-  },
-  {
-    text: 'Following',
-    link: '/',
-    style: 'dashboard__navItem'
-  },
-  {
-    text: 'Followers',
-    link: '/',
-    style: 'dashboard__navItem'
-  },
-  {
-    text: 'Likes',
-    link: '/',
-    style: 'dashboard__navItem'
-  }
-];
-
-export const sideNavItems = [
+const sideNavItems = [
   {
     type: 'option',
     iconUrl: HomeIcon,
@@ -62,3 +39,5 @@ export const sideNavItems = [
     container: 'sidenav__container--bookmark'
   }
 ];
+
+export default sideNavItems;

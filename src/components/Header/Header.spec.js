@@ -1,14 +1,14 @@
 import CheckPropTypes from 'check-prop-types';
 import moxios from 'moxios';
-import getUserDetails from '../../actions/user/getUserDetails';
 import { Header } from './Header';
-import TopNav from '../TopNav/TopNav';
-import SearchForm from '../SearchForm/SearchForm';
+
 
 const setup = (propsOverride) => {
   const props = {
     user: null,
     getUserDetails: jest.fn(),
+    deAuthUser: jest.fn(),
+    isAuthenticated: true,
     ...propsOverride,
   };
 
@@ -43,8 +43,31 @@ describe('Header Component', () => {
         'props',
         Header.name
       );
-
       expect(propsError).toBeUndefined();
+    });
+  });
+
+  describe('Header component render test', () => {
+    it('authenticate user', () => {
+      const props = {
+        user: null,
+        getUserDetails: jest.fn(),
+        deAuthUser: jest.fn(),
+        isAuthenticated: false,
+        getUserDetails: jest.fn()
+      };
+      const prevProps = {
+        user: null,
+        getUserDetails: jest.fn(),
+        deAuthUser: jest.fn(),
+        isAuthenticated: true,
+      };
+
+      let wrapper = shallow(<Header {...props} />);
+      const classInstance = wrapper.instance();
+      classInstance.componentDidUpdate(prevProps);
+      expect(wrapper.find('Header__logo')).toBeTruthy();
+      expect(props.getUserDetails).toHaveBeenCalled();
     });
   });
 });

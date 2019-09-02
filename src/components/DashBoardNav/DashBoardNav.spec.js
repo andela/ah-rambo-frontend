@@ -1,9 +1,9 @@
-import DashBoard from  './DashBoardNav';
-const items=[
+import DashBoard from './DashBoardNav';
+const items = [
   {
     text: 'Posts',
-    link: '/',
-    style: 'NavItem-focus'
+    link: '/profile',
+    style: 'NavItem'
   },
   {
     text: 'Following',
@@ -22,11 +22,11 @@ const items=[
   }
 ];
 const props = {
-  items,
-}
+  items
+};
 describe('DashBoard Navbar test', () => {
-it('renders successfully', async () => {
-  const wrapper = shallow(<DashBoard {...props} />);
-  expect(wrapper.find('div')).toHaveLength(5);
-});
+  it('renders successfully', async () => {
+    const wrapper = shallow(<DashBoard {...props} />);
+    expect(wrapper.find('div')).toHaveLength(5);
+  });
 });

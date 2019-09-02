@@ -6,10 +6,8 @@ import './DashBoardNav.scss';
 const DashBoardNav = (props) => {
   const { items } = props;
   const showItems = () => items.map((item, i) => (
-    <div key={i} className={item.style}>
-      <Link to={item.link}>
-        <p>{item.text}</p>
-      </Link>
+    <div key={i} className={item.active ? 'dashboard__navItem--focus' : 'dashboard__navItem' } onClick={item.onclick} >
+      <p>{item.text}</p>
     </div>
   ));
   return (

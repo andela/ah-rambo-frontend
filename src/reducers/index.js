@@ -5,6 +5,7 @@ import resetPassword from './user/resetPassword';
 import requestPassword from './user/requestPassword';
 import article from './article/article';
 import user from './user/user';
+import auth from './auth';
 
 export default combineReducers({
   loginReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
   resetPassword,
   requestPassword,
   user,
-  article
+  article,
+  auth
 });

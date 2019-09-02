@@ -6,7 +6,7 @@ import {
 } from '../../actionTypes';
 import { setToStorage } from '../../helpers/storageHelper';
 
-export default user => async dispatch => {
+export default (user) => async (dispatch) => {
   dispatch({ type: SIGNUP_REQUEST });
 
   try {
@@ -16,12 +16,12 @@ export default user => async dispatch => {
     dispatch({ type: SIGNUP_SUCCESS });
   } catch (err) {
     const {
-      data: { error }
+      data: { error },
     } = err.response;
 
     dispatch({
       type: SIGNUP_FAILURE,
-      error
+      error,
     });
   }
 };

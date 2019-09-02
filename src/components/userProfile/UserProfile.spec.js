@@ -3,7 +3,8 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { BrowserRouter as Router } from 'react-router-dom'
-import UserProfile from './UserProfile';
+import UserProfileComponent from './UserProfile';
+import { UserProfile } from './UserProfile';
 
 const initialState = {
   userData: {},
@@ -17,16 +18,6 @@ const initialState = {
   userArticleLoading: false
 };
 
-const article = {
-  articleError: null,
-  articleData: {total: 0, data: []},
-  articleLoading: false
-};
-const user = {
-  userData: {},
-  userLoading: false,
-  userError: null
-};
 const createStore = ( article, user) => {
   const content = {
     user: {
@@ -56,9 +47,9 @@ const props = {
   articleError: null,
   articleData: {},
   history: { push: jest.fn() },
-  articleLoading: false
+  articleLoading: false,
+  getUserArticles: jest.fn()
 }
-
 
 describe('User Profile Component Test', () => {
   it ('renders the component successfully', () => {
@@ -66,7 +57,7 @@ describe('User Profile Component Test', () => {
     const wrapper = mount(
       <Provider store={createStore()}>
         <Router>
-          <UserProfile {...props}/>
+          <UserProfileComponent {...props}/>
         </Router>
       </Provider>
     );
@@ -97,7 +88,7 @@ const user = {
 
       <Provider store={createStore(article, user)}>
         <Router>
-          <UserProfile {...props}/>
+          <UserProfileComponent {...props}/>
         </Router>
       </Provider>
     );
@@ -131,7 +122,7 @@ const user = {
     const wrapper = mount(
       <Provider store={createStore(article, user)}>
         <Router>
-          <UserProfile {...props}/>
+          <UserProfileComponent {...props}/>
         </Router>
       </Provider>
     );
@@ -168,17 +159,17 @@ const user = {
     const wrapper = mount(
       <Provider store={createStore(article, user)}>
         <Router>
-          <UserProfile {...props}/>
+          <UserProfileComponent {...props}/>
         </Router>
       </Provider>
     );
     expect(props.history.push).toHaveBeenCalled();
   });
 
-  it('fails to return article when session expired', () => {
+  it('fails to return article when theres no articles by the user', () => {
     const article = {
       articleError: null,
-      articleData: undefined,
+      articleData: {total: 0, data: []},
       articleLoading: false
     };
     const user = {
@@ -199,17 +190,53 @@ const user = {
         push: jest.fn()
       },
       articleError: null,
+      articleData: undefined,
       userArticleLoading: false
     }
     const wrapper = mount(
       <Provider store={createStore(article, user)}>
         <Router>
-          <UserProfile {...props}/>
+          <UserProfileComponent {...props}/>
         </Router>
       </Provider>
     );
     expect(wrapper.find('main')).toHaveLength(1);
+  });
 
+  describe("article render", () => {
+    test("article is rendered ", () => {
+      const wrapper = shallow(<UserProfile {...props} />);
+      const classInstance = wrapper.instance();
+      classInstance.articleClick();
+      expect(classInstance.state.articleDisplay).toBe(true);
+    });
+  });
+
+  describe("following render", () => {
+    test("following is rendered ", () => {
+      const wrapper = shallow(<UserProfile {...props} />);
+      const classInstance = wrapper.instance();
+      classInstance.followingClick();
+      expect(classInstance.state.followingDisplay).toBe(true);
+    });
+  });
+
+  describe("follower render", () => {
+    test("follower is rendered ", () => {
+      const wrapper = shallow(<UserProfile {...props} />);
+      const classInstance = wrapper.instance();
+      classInstance.followerClick();
+      expect(classInstance.state.followersDisplay).toBe(true);
+    });
+  });
+
+  describe("likes render", () => {
+    test("likes is rendered ", () => {
+      const wrapper = shallow(<UserProfile {...props} />);
+      const classInstance = wrapper.instance();
+      classInstance.likesClick();
+      expect(classInstance.state.likesDisplay).toBe(true);
+    });
   });
 });
 
