@@ -1,5 +1,6 @@
+import { combineReducers } from 'redux';
 import validate from './validate';
 
-export default {
+export default combineReducers({
   validate
-};
+});
