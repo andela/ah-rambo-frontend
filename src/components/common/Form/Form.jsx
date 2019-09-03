@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+/* eslint-disable require-jsdoc */
+>>>>>>> Feature-[167190489]: user signup
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Form.scss';

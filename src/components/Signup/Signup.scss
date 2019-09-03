@@ -1,0 +1,116 @@
+.Signup {
+  display: flex;
+  padding: 44px 10px;
+  justify-content: space-around;
+}
+
+.Signup__info {
+  display: none;
+
+  h2 {
+    line-height: 1.1;
+  }
+}
+
+.Signup__info__text::before {
+  content: ' ';
+  position: absolute;
+  background: url('../../../assets/icon/icons8-double-tick.png') no-repeat;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background-size: 100%;
+}
+
+.Signup__form__header {
+  text-align: center;
+  font: {
+    size: 2em;
+    weight: 300;
+  }
+}
+
+.Signup__form {
+  width: 100%;
+  max-width: 400px;
+
+  .signup-error {
+    // border: 3px solid #dd2c00;
+    color: #dd2c00;
+    // background: #dd2c00;
+    // padding: 1rem 0.5rem;
+  }
+
+  .form-field:last-of-type {
+    text-align: center;
+    margin-top: 44px;
+  }
+}
+
+.Signup__form__footer {
+  margin-top: 55px;
+  display: flex;
+  flex-direction: column;
+
+  .social-signup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 11px;
+  }
+
+  .social-icons {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+
+    & > img {
+      max-width: 100%;
+    }
+
+    &:hover {
+      cursor: pointer;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  & > p {
+    text-align: center;
+
+    & > a {
+      text-decoration: underline;
+
+      &:hover {
+        color: initial;
+      }
+    }
+  }
+}
+
+/* not small devices  */
+@media (min-width: 860px) {
+  .Signup {
+    padding: 44px 100px;
+  }
+
+  .Signup__info {
+    display: block;
+    padding-top: 122px;
+    padding-right: 1rem;
+  }
+
+  .Signup__info__header {
+    font-size: 2em;
+  }
+
+  .Signup__info__text {
+    position: relative;
+    padding-left: 30px;
+  }
+
+  .Signup__form {
+    padding-left: 1rem;
+  }
+}

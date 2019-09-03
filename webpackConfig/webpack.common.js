@@ -10,23 +10,23 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: ['babel-loader']
+        exclude: [/node_modules/, /joi-browser/],
+        use: ['babel-loader'],
       },
       {
         test: /\.(png|svg|jpg|gif|woff|woff2|eot|ttf|otf)$/,
         exclude: /node_modules/,
-        use: ['file-loader']
+        use: ['file-loader'],
       },
       {
         test: /\.svg$/,
-        loader: 'raw-loader'
+        loader: 'raw-loader',
       },
       {
         test: /\.(css|scss)$/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
-      }
-    ]
+      },
+    ],
   },
 
   resolve: {
@@ -36,9 +36,8 @@ module.exports = {
       components: path.resolve(__dirname, './src/components'),
       reducers: path.resolve(__dirname, './src/reducers'),
       containers: path.resolve(__dirname, './src/containers'),
-      store: path.resolve(__dirname, './src/store')
-
-    }
+      store: path.resolve(__dirname, './src/store'),
+    },
   },
 
   plugins: [
@@ -53,13 +52,13 @@ module.exports = {
       minify: {
         removeComments: true,
         minifyJS: true,
-        minifyCSS: true
-      }
-    })
+        minifyCSS: true,
+      },
+    }),
   ],
 
   output: {
     path: path.join(__dirname, '../build'),
-    filename: 'bundle.js'
-  }
+    filename: 'bundle.js',
+  },
 };
