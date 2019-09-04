@@ -1,0 +1,28 @@
+@import '../../styles/variables.scss';
+
+.btn {
+  display: inline-block;
+  margin: 0;
+  color: $whiteColor;
+  background-color: $matterhornColor;
+  padding: 0.75rem 3rem;
+  border-radius: 2px;
+  outline: 0;
+  transition: background-color 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  font: {
+    size: 1em;
+    weight: 400;
+  }
+  &:hover {
+    background-color: $whiteColor;
+    color: $matterhornColor;
+    border: 1px solid $matterhornColor;
+    cursor: pointer;
+  }
+  &:disabled {
+    cursor: not-allowed;
+    color: $whiteColor;
+    background-color: $greyColor;
+    border: none;
+  }
+}

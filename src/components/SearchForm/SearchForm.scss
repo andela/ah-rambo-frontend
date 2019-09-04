@@ -1,0 +1,20 @@
+.SearchForm {
+  input {
+    display: inline-block;
+    line-height: 1.7;
+    border: none !important;
+  }
+
+  .search-icon {
+    padding: 0.4rem 0.5rem;
+    width: 40px;
+    outline: 0;
+    border-width: 0;
+    display: flex;
+    align-items: center;
+
+    img {
+      max-width: 100%;
+    }
+  }
+}
