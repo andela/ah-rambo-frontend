@@ -8,7 +8,7 @@
           "node":"current"
         }
       }
-    ],
+    ]
   ],
   "env": {
     "development": {
@@ -20,11 +20,12 @@
     "test": {
       "plugins": [
         ["@babel/plugin-proposal-class-properties", { "loose": true }],
-        "@babel/plugin-transform-runtime",
+        "@babel/plugin-transform-runtime"
       ]
     },
     "production": {
       "plugins": [
+        "@babel/plugin-proposal-class-properties",
         "@babel/plugin-transform-runtime"
       ]
     }
