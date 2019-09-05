@@ -6,8 +6,7 @@ import {
 } from '../../actionTypes/index';
 
 export const resetPassword = () => ({
-  type: RESET_PASSWORD_REQUEST,
-  payload: {}
+  type: RESET_PASSWORD_REQUEST
 });
 
 export const success = (payload) => ({
