@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Router from './Router';
 import Footer from './Footer/Footer';
+import Header from './Header/Header';
 
 /**
  *
@@ -11,6 +12,7 @@ import Footer from './Footer/Footer';
  */
 const App = () => (
   <BrowserRouter>
+    <Header />
     <Router />
     <Footer />
   </BrowserRouter>
