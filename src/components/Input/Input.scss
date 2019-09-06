@@ -1,0 +1,35 @@
+.form-field {
+  margin-bottom: 22px;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'] {
+  width: 100%;
+  height: 44px;
+  color: inherit;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+  padding: 0.5rem;
+  font-size: 1em;
+  background: transparent;
+  outline: 0;
+
+  &:focus {
+    border-color: rgba(0, 0, 0, 0.5);
+  }
+
+  &::placeholder {
+    font-weight: 300;
+    font-size: 0.9em;
+  }
+}
+
+.has-validation-error {
+  border-color: #dd2c00 !important;
+}
+
+.input-validation-error {
+  font-size: 0.95em;
+  color: #dd2c00 !important;
+}
