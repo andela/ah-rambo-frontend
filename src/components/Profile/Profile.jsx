@@ -1,3 +1,26 @@
-import React from 'react';
+/* eslint-disable require-jsdoc */
+import React, { Component } from 'react';
 
-export default () => <p>Welcome to profile page</p>;
+class Profile extends Component {
+  state = {
+    username: null,
+  };
+
+  componentDidMount() {
+    try {
+      const username = localStorage.getItem('username');
+      this.setState({ username });
+    } catch (error) {}
+  }
+
+  render() {
+    return (
+      <p>
+        Welcome to profile page, &nbsp;
+        {this.state.username}
+      </p>
+    );
+  }
+}
+
+export default Profile;
