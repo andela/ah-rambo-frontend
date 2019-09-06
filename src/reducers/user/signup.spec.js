@@ -1,9 +1,5 @@
 import signupReducer from '../../reducers/signupStatus';
-import {
-  USER_SIGNUP_REQUEST,
-  USER_SIGNUP_SUCCESS,
-  USER_SIGNUP_FAILURE,
-} from '../../actionTypes';
+import { USER_SIGNUP } from '../../actionTypes';
 
 describe('Signup Reducer', () => {
   it('returns initial state when no action is dispatched', () => {
