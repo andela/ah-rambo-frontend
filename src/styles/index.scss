@@ -82,8 +82,7 @@ input[type='password'] {
 }
 
 .container {
-  width: 100%;
-  margin: 0 auto;
+  min-height: calc(100vh - 60px);
 }
 
 .navbar {
@@ -116,7 +115,28 @@ input[type='password'] {
 }
 
 .footer {
-  display: block;
-  background-color: $greyColor;
+  background-color: rgba(0, 0, 0, 0.05);
   color: $matterhornColor;
+  min-width: fit-content;
+  display: flex;
+  justify-content: space-around;
+  height: 60px;
+}
+
+@media (min-width: 425px) {
+  .container {
+    min-height: calc(100vh - 80px);
+  }
+  .footer {
+    height: 80px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    min-height: calc(100vh - 100px);
+  }
+  .footer {
+    height: 100px;
+  }
 }
