@@ -5,8 +5,9 @@ import Joi from 'joi-browser';
 import PropTypes from 'prop-types';
 import signupInputSchema from '../../schemas/signup';
 import signupAction from '../../actions/user/signupAction';
-import { Form, Input, Button } from '../common';
-import { GoogleIcon, TwitterIcon, FacebookIcon } from '../../../assets/icons';
+import {
+  Form, Input, Button, SocialLogin
+} from '../common';
 import './Signup.scss';
 
 /**
@@ -206,16 +207,7 @@ export class Signup extends Component {
 
           <div className="Signup__form__footer">
             <div className="social-signup">
-              Continue with:
-              <span className="social-icons">
-                <img src={FacebookIcon} alt="Facebook Icon" />
-              </span>
-              <span className="social-icons">
-                <img src={GoogleIcon} alt="Google Icon" />
-              </span>
-              <span className="social-icons">
-                <img src={TwitterIcon} alt="Twitter Icon" />
-              </span>
+              <SocialLogin />
             </div>
 
             <p>

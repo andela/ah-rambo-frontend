@@ -3,17 +3,17 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { login } from '../../actions/user/login';
-import { Input, Form, Button } from '../common';
-import './login.scss';
 import {
-  GoogleIcon, FacebookIcon, TwitterIcon,
-} from '../../../assets/icons';
+  Input, Form, Button, SocialLogin
+} from '../common';
+import './login.scss';
 
 /**
  *
  *
  * @export
  * @class Login
+ * @param {Object} e event-listener
  * @extends {Component}
  */
 export class Login extends Component {
@@ -46,10 +46,14 @@ export class Login extends Component {
        await this.props.login(userLogin, password);
        const { error, history: { push } } = this.props;
        this.setState({ errors: { server: error } });
-       if (!error) push('/home');
+       if (!error) push('/');
      }
    }
 
+   /**
+    * @name render
+    * @returns {HMTL} HTML DOM Elements
+    */
    render() {
      const {
        state: {
@@ -58,70 +62,69 @@ export class Login extends Component {
        props: { error, isLoading }
      } = this;
      return (
-       <main className="Login">
-         <section className="Login__info">
-           <h2 className="Login__info__header">
+       <div className="container">
+         <main className="Login">
+           <section className="Login__info">
+             <h2 className="Login__info__header">
               Inspire the next generation of users by
-             <br />
+               <br />
               continuously voicing your innovative ideas
-           </h2>
-           <p className="Login__info__text">Join the world&apos;s largest community of writers and readers</p>
-           <p className="Login__info__text">20M+ active users</p>
-           <p className="Login__info__text">Over 2000+ new stories daily</p>
-           <p className="Login__info__text">No hidden charges. Get started for free now!</p>
-         </section>
-         <div className="Login__form">
-           <p className="Login__form__header">Log In</p>
-           <Form className="form" onSubmit={this.handleSubmit}>
-             <Input
-               type="text"
-               className={errors.userLogin && 'has-validation-error'}
-               error={errors.userLogin}
-               name="userLogin"
-               value={userLogin}
-               placeholder="email or username"
-               onChange={this.handleChange}
-               onFocus={this.handleFocus}
-             />
-
-             <Input
-               type="password"
-               className={errors.password && 'has-validation-error'}
-               error={errors.password}
-               name="password"
-               value={password}
-               placeholder="password"
-               onChange={this.handleChange}
-               onFocus={this.handleFocus}
-             />
-             {error && (<p className="center input-validation-error">{errors.server}</p>)}
-             <div className="form-field">
-               <Button
-                 className="btn"
-                 title="Please fill up the form"
-                 label={isLoading ? 'Please wait...' : 'Submit'}
-                 disabled={isLoading}
+             </h2>
+             <p className="Login__info__text">Join the world&apos;s largest community of writers and readers</p>
+             <p className="Login__info__text">20M+ active users</p>
+             <p className="Login__info__text">Over 2000+ new stories daily</p>
+             <p className="Login__info__text">No hidden charges. Get started for free now!</p>
+           </section>
+           <div className="Login__form">
+             <p className="Login__form__header">Log In</p>
+             <Form className="form" onSubmit={this.handleSubmit}>
+               <Input
+                 type="text"
+                 className={errors.userLogin && 'has-validation-error'}
+                 error={errors.userLogin}
+                 name="userLogin"
+                 value={userLogin}
+                 placeholder="email or username"
+                 onChange={this.handleChange}
+                 onFocus={this.handleFocus}
                />
-             </div>
-             <p className="center">
-               <Link to="/forgotPassword"> Forgot Password?</Link>
-             </p>
-           </Form>
-           <div className="form__footer">
-             <span>
-                Continue with:
-               <img className="facebook-icon" src={FacebookIcon} alt="facebook" />
-               <img className="google-icon" src={GoogleIcon} alt="google" />
-               <img className="twitter-icon" src={TwitterIcon} alt="twitter" />
-             </span>
-             <span>
-          Don't have an account?
-               <Link to="/signup">Sign Up</Link>
 
-             </span>
+               <Input
+                 type="password"
+                 className={errors.password && 'has-validation-error'}
+                 error={errors.password}
+                 name="password"
+                 value={password}
+                 placeholder="password"
+                 onChange={this.handleChange}
+                 onFocus={this.handleFocus}
+               />
+               {error && (<p className="center input-validation-error">{errors.server}</p>)}
+               <div className="form-field">
+                 <Button
+                   className="btn"
+                   title="Please fill up the form"
+                   label={isLoading ? 'Please wait...' : 'Submit'}
+                   disabled={isLoading}
+                 />
+               </div>
+               <p className="center">
+                 <Link to="/forgotPassword"> Forgot Password?</Link>
+               </p>
+             </Form>
+             <div className="form__footer">
+               <span>
+                 <SocialLogin />
+               </span>
+               <span>
+                  Don&apos;t have an account?
+                 <Link to="/signup">Sign Up</Link>
+
+               </span>
+             </div>
            </div>
-         </div>
-       </main>
+         </main>
+       </div>
      );
    }
 }
@@ -133,7 +136,7 @@ Login.propTypes = {
   login: PropTypes.func.isRequired,
 };
 
-const mapState = (state) => state.loginReducer;
+export const mapState = (state) => state.loginReducer;
 const actionCreators = {
   login
 };

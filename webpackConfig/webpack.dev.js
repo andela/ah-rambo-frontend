@@ -28,7 +28,7 @@ module.exports = merge(commonConfig, {
 
   plugins: [
     new Webpack.HotModuleReplacementPlugin(),
-    new Webpack.EnvironmentPlugin({ NODE_ENV: 'development' })
+    new Webpack.EnvironmentPlugin(['NODE_ENV', 'SERVER_URL'])
 
   ]
 });

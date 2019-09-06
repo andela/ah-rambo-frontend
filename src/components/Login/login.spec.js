@@ -1,5 +1,6 @@
 import { Login } from './login';
 import { Input } from '../common';
+import { mapState } from './login';
 
 const USER = {
   userLogin: 'userrrrrrr',
@@ -33,12 +34,10 @@ describe('Login Component Rendering', () => {
     const FormComponent = wrapper.find('Form');
     const button = wrapper.find('Button');
 
-
     expect(FormComponent).toHaveLength(1);
     expect(FormComponent.dive().find('Input')).toHaveLength(2);
     expect(FormComponent.dive().find('Button')).toHaveLength(1);
     expect(button.props().label).toEqual('Submit')
-
   });
 });
 
@@ -71,10 +70,42 @@ describe('Login Component interaction', () => {
     const { wrapper, props } = setup();
     const Form = wrapper.find('Form');
     wrapper.setState({ userLogin: USER.userLogin});
-    wrapper.setState({ password: USER.password});
-    Form.simulate('submit', {preventDefault: jest.fn}); 
+    wrapper.setState({password: USER.password}); 
+    Form.simulate('submit', { preventDefault: jest.fn });
     expect(wrapper.state('userLogin')).toEqual(USER.userLogin);
     expect(wrapper.state('password')).toEqual(USER.password);
+    expect(props.login).toHaveBeenCalled();
+  });
+
+  it('gets loading state and displays it', () => {
+    const props = {
+      isLoading: true,
+      login: jest.fn(),
+      history: { push: jest.fn() },
+      error: null,
+    };
+
+    const component = shallow(<Login {...props} />);
+    const button = component.find('Button');
+    expect(button.props().label).toEqual('Please wait...');
+  });
+
+
+  it('returns error gotten as props from the server', () => {
+    const props = {
+      isLoading: false,
+      login: jest.fn(),
+      history: { push: jest.fn() },
+      error: null,
+    };
+
+    const component = shallow(<Login {...props} />);
+    const Form = component.find('Form');
+    component.setState({ userLogin: USER.userLogin });
+    component.setState({ password: USER.password });
+    Form.simulate('submit', { preventDefault: jest.fn });
+    expect(component.state('userLogin')).toEqual(USER.userLogin);
+    expect(component.state('password')).toEqual(USER.password);
     expect(props.login).toHaveBeenCalled();
   });
 });
@@ -88,5 +119,19 @@ describe('login Inputs Validation', () => {
     userLoginField.simulate('change', event);
     classInstance.handleSubmit({ preventDefault: jest.fn() });
     expect(classInstance.state.errors.userLogin).toBeTruthy();
+  });
+});
+
+describe('Test mapStateToProps function', () => {
+  const state = {
+    loginReducer: {
+      isLoading: false,
+      error: null
+    }
+  };
+
+  it('maps the correct state to props', () => {
+    expect(mapState(state).isLoading).toEqual(false);
+    expect(mapState(state).error).toEqual(null);
   });
 });
