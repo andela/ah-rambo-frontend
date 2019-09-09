@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Joi from 'joi-browser';
 import PropTypes from 'prop-types';
 import signupInputSchema from '../../schemas/signup';
-import signupUser from '../../actions/user/signup';
+import signupAction from '../../actions/user/signupAction';
 import Form from '../Form/Form';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
@@ -12,15 +12,6 @@ import GoogleIcon from '../../../assets/icon/google.png';
 import TwitterIcon from '../../../assets/icon/twitter.png';
 import FacebookIcon from '../../../assets/icon/facebook.png';
 import './Signup.scss';
-
-const initialData = {
-  firstName: '',
-  lastName: '',
-  userName: '',
-  email: '',
-  password: '',
-  confirmPassword: '',
-};
 
 /**
  *
@@ -31,7 +22,14 @@ const initialData = {
  */
 export class Signup extends Component {
   state = {
-    data: { ...initialData },
+    data: {
+      firstName: '',
+      lastName: '',
+      userName: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+    },
     errors: {},
   };
 
@@ -61,12 +59,11 @@ export class Signup extends Component {
   renderSignupError = () => {
     const { errors } = this.state;
     const {
-      signupStatus: { reason },
+      signupReducer: { error },
     } = this.props;
 
-    const errorsClone = { ...errors };
-    errorsClone.signup = reason;
-    this.setState({ errors: errorsClone });
+    errors.signup = error;
+    this.setState({ errors });
   };
 
   redirectUserToProfilePage = () => {
@@ -76,21 +73,23 @@ export class Signup extends Component {
     push('/profile');
   };
 
-  handleChange = ({ target: input }) => {
+  handleChange = ({ target }) => {
     const { data } = this.state;
-    const dataClone = { ...data };
-    dataClone[input.name] = input.value;
-    this.setState({ data: dataClone });
+    data[target.name] = target.value;
+    this.setState({ data });
   };
 
-  clearErrorMessages = ({ target: input }) => {
-    const errors = { ...this.state.errors };
-    errors[input.name] = '';
+  clearErrorMessages = ({ target }) => {
+    const { errors } = this.state;
+    errors[target.name] = '';
     this.setState({ errors });
   };
 
   handleSubmit = async (event) => {
     event.preventDefault();
+    const { data: user } = this.state;
+    const { signupAction: signup } = this.props;
+
     const validationErrors = this.validateInputs();
     this.setState({
       errors: validationErrors || {},
@@ -98,13 +97,11 @@ export class Signup extends Component {
 
     if (validationErrors) return null;
 
-    await this.props.signupUser(this.state.data);
+    await signup(user);
 
-    const {
-      signupStatus: { status },
-    } = this.props;
-    if (status === 'failed') this.renderSignupError();
-    if (status === 'completed') this.redirectUserToProfilePage();
+    const { signupReducer } = this.props;
+    if (signupReducer.error) this.renderSignupError();
+    if (signupReducer.signedUp) this.redirectUserToProfilePage();
   };
 
   /**
@@ -115,7 +112,7 @@ export class Signup extends Component {
    */
   render() {
     const { data, errors } = this.state;
-    const { signupStatus } = this.props;
+    const { signupReducer } = this.props;
 
     return (
       <>
@@ -212,8 +209,8 @@ export class Signup extends Component {
                 <Button
                   className="btn"
                   title="Please fill up the form"
-                  label="Submit"
-                  disabled={signupStatus.status === 'processing'}
+                  label={signupReducer.isLoading ? 'Please wait...' : 'Submit'}
+                  disabled={signupReducer.isLoading}
                 />
               </div>
             </Form>
@@ -245,14 +242,14 @@ export class Signup extends Component {
 }
 
 Signup.propTypes = {
-  signupStatus: PropTypes.object.isRequired,
-  signupUser: PropTypes.func.isRequired,
+  signupReducer: PropTypes.object.isRequired,
+  signupAction: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = ({ signupStatus }) => ({ signupStatus });
+const mapStateToProps = ({ signupReducer }) => ({ signupReducer });
 
 export default connect(
   mapStateToProps,
-  { signupUser }
+  { signupAction }
 )(Signup);

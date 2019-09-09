@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 /* eslint-disable require-jsdoc */
->>>>>>> Feature-[167190489]: user signup
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Form.scss';
@@ -13,7 +10,7 @@ const Form = ({ className, children, onSubmit }) => (
 );
 
 Form.defaultProps = {
-  className: '',
+  className: 'form',
 };
 
 Form.propTypes = {

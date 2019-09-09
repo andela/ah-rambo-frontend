@@ -15,8 +15,8 @@ const MOCK_USER = {
 
 const setup = (propsOverride) => {
   const props = {
-    signupStatus: {},
-    signupUser: jest.fn(),
+    signupReducer: {},
+    signupAction: jest.fn(),
     history: { push: jest.fn() },
     ...propsOverride,
   };
@@ -55,25 +55,50 @@ describe('Signup Component Rendering', () => {
     );
     expect(propsError).toBeUndefined();
   });
-});
 
-describe('Signup Component Interactivity', () => {
-  it('renders signup error from backend', () => {
+  it('renders signup error when signup request fails', () => {
     const { wrapper, props } = setup({
-      signupStatus: { status: 'failed', reason: 'email has been taken' },
+      signupReducer: {
+        signedUp: false,
+        isLoading: false,
+        error: 'email has been taken',
+      },
     });
     const classInstance = wrapper.instance();
-    const stateClone = { ...classInstance.state };
+    const state = { ...classInstance.state };
 
-    stateClone.errors.signup = props.signupStatus.reason;
-    stateClone.data = { ...MOCK_USER };
-    wrapper.setState({ data: stateClone.data });
-    classInstance.setState({ errors: stateClone.errors });
+    state.errors.signup = props.signupReducer.error;
+    state.data = { ...MOCK_USER };
+    wrapper.setState({ data: state.data });
+    classInstance.setState({ errors: state.errors });
 
     classInstance.handleSubmit({ preventDefault: jest.fn() });
     expect(classInstance.props).toBeTruthy();
   });
 
+  it('renders "Please wait..." on button when request is initiated', () => {
+    const { wrapper, props } = setup({
+      signupReducer: { signedUp: false, isLoading: true },
+    });
+    const buttonWrapper = wrapper
+      .find('Form')
+      .dive()
+      .find('Button')
+      .dive()
+      .find('button');
+
+    wrapper.setState({ data: MOCK_USER });
+    wrapper
+      .find('Form')
+      .dive()
+      .find('form')
+      .simulate('submit', { preventDefault: jest.fn() });
+
+    expect(buttonWrapper.text()).toBe('Please wait...');
+  });
+});
+
+describe('Signup Component Interactivity', () => {
   it('updates its state when input fields change', () => {
     const { wrapper } = setup();
     const classInstance = wrapper.instance();
@@ -110,7 +135,9 @@ describe('Signup Component Interactivity', () => {
   });
 
   it('redirect user to profile page when signup request is successful', () => {
-    const { wrapper, props } = setup({ signupStatus: { status: 'completed' } });
+    const { wrapper, props } = setup({
+      signupReducer: { signedUp: true, isLoading: false },
+    });
     wrapper.setState({ data: MOCK_USER });
     wrapper
       .find('Form')
@@ -118,7 +145,7 @@ describe('Signup Component Interactivity', () => {
       .find('form')
       .simulate('submit', { preventDefault: jest.fn() });
 
-    expect(props.signupUser).toHaveBeenCalled();
+    expect(props.signupAction).toHaveBeenCalled();
   });
 });
 

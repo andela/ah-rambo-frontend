@@ -1,14 +1,23 @@
 import ReduxThunk from 'redux-thunk';
 import configureStore from 'redux-mock-store';
 import moxios from 'moxios';
-import signup from './signup';
+import signupAction from './signupAction';
 import {
   USER_SIGNUP_REQUEST,
   USER_SIGNUP_SUCCESS,
   USER_SIGNUP_FAILURE,
 } from '../../actionTypes';
 
-describe('User Signup Action Creators', () => {
+const MOCK_USER = {
+  firstName: 'John',
+  lastName: 'Doe',
+  userName: 'john101',
+  email: 'john@doe.com',
+  password: 'john@doe.com',
+  confirmPassword: 'john@doe.com',
+};
+
+describe('Signup Action Creators', () => {
   const mockStore = configureStore([ReduxThunk]);
 
   beforeEach(() => moxios.install());
@@ -22,7 +31,7 @@ describe('User Signup Action Creators', () => {
 
     const expectedActions = [
       { type: USER_SIGNUP_REQUEST },
-      { type: USER_SIGNUP_SUCCESS, payload: { token, user } },
+      { type: USER_SIGNUP_SUCCESS },
     ];
 
     moxios.wait(() => {
@@ -30,7 +39,7 @@ describe('User Signup Action Creators', () => {
       request.respondWith({ status: 201, response: { token, user } });
     });
 
-    await store.dispatch(signup(user));
+    await store.dispatch(signupAction(user));
     expect(store.getActions()).toEqual(expectedActions);
   });
 
@@ -42,7 +51,7 @@ describe('User Signup Action Creators', () => {
 
     const expectedActions = [
       { type: USER_SIGNUP_REQUEST },
-      { type: USER_SIGNUP_FAILURE, payload: 'undefined' },
+      { type: USER_SIGNUP_FAILURE, error: undefined },
     ];
 
     moxios.wait(() => {
@@ -55,7 +64,7 @@ describe('User Signup Action Creators', () => {
       });
     });
 
-    await store.dispatch(signup(user));
+    await store.dispatch(signupAction(user));
     expect(store.getActions()).toEqual(expectedActions);
   });
 });

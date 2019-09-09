@@ -25,6 +25,13 @@ describe('Input Component', () => {
     expect(wrapper.find('input')).toHaveLength(1);
   });
 
+  it('renders an error below when it recieves error props', () => {
+    const { wrapper } = setup({ error: 'first name is required' });
+
+    expect(wrapper.exists()).toBeTruthy();
+    expect(wrapper.find('.input-validation-error')).toHaveLength(1);
+  });
+
   it('does not throw a warning with correct prop types', () => {
     const { props } = setup();
     const propsError = CheckPropTypes(
