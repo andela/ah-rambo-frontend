@@ -39,6 +39,8 @@
   font-size: 7px;
   align-self: center;
   padding-right: 8%;
+ p{ margin: inherit;
+  text-decoration: underline;}
 }
 
 .footer__email {
@@ -53,11 +55,6 @@
   flex-direction: column;
   justify-content: center;
   font-size: 7px;
-}
-
-p {
-  margin: inherit;
-  text-decoration: underline;
 }
 
 .footer__social-icons {
