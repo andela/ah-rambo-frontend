@@ -112,7 +112,14 @@ input[type='password'] {
     border: 1px solid $matterhornColor;
     cursor: pointer;
   }
+  &:disabled{
+    cursor:not-allowed;
+    color: $whiteColor;
+    background-color: $greyColor;
+    border: none;
+  }
 }
+
 
 .footer {
   background-color: rgba(0, 0, 0, 0.05);
@@ -140,3 +147,30 @@ input[type='password'] {
     height: 100px;
   }
 }
+
+input[type='text'],
+input[type='email'],
+input[type='password'] {
+  width: 100%;
+  color: inherit;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+  padding: 0.5rem;
+  font-size: 1em;
+  background: transparent;
+  outline: 0;
+
+  &:focus {
+    border-color: rgba(0, 0, 0, 0.5);
+  }
+
+  &::placeholder {
+    font-weight: 200;
+    font-size: 0.9em;
+  }
+}
+.has-validation-error {
+    border-color:$redColor !important;
+}
+
+

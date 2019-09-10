@@ -1,5 +1,5 @@
 import { GET_USER_PROFILE } from '../../actionTypes';
-import userReducer from './';
+import userReducer from './userProfile';
 
 describe('User Reducer', () => {
   it('returns default state', () => {
