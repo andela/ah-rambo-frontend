@@ -1,8 +1,8 @@
 import signupReducer from './signupReducer';
 import {
-  USER_SIGNUP_REQUEST,
-  USER_SIGNUP_SUCCESS,
-  USER_SIGNUP_FAILURE,
+  SIGNUP_REQUEST,
+  SIGNUP_SUCCESS,
+  SIGNUP_FAILURE,
 } from '../../actionTypes';
 
 describe('Signup Reducer', () => {
@@ -24,21 +24,21 @@ describe('Signup Reducer', () => {
 
   it('returns a state to indicate when the signup request is ongoing', () => {
     const payload = { ...INITIAL_STATE, isLoading: true };
-    const action = { type: USER_SIGNUP_REQUEST };
+    const action = { type: SIGNUP_REQUEST };
     const outcome = signupReducer(INITIAL_STATE, action);
     expect(outcome).toMatchObject(payload);
   });
 
   it('returns a state to indicate when the signup request is completed', () => {
     const payload = { ...INITIAL_STATE, signedUp: true, isLoading: false };
-    const action = { type: USER_SIGNUP_SUCCESS };
+    const action = { type: SIGNUP_SUCCESS };
     const outcome = signupReducer(INITIAL_STATE, action);
     expect(outcome).toMatchObject(payload);
   });
 
   it('returns a state to indicate when the signup request fails', () => {
     const action = {
-      type: USER_SIGNUP_FAILURE,
+      type: SIGNUP_FAILURE,
       error: 'email has already taken',
     };
     const payload = { ...INITIAL_STATE, isLoading: false, error: action.error };

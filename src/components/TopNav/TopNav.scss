@@ -4,9 +4,11 @@
   .Header__nav__list {
     display: flex;
     flex-direction: row;
+    justify-content: right;
 
     .Header__nav__item {
       padding: 0.7rem 0.9rem;
+      margin-left: 10px;
     }
 
     .user {

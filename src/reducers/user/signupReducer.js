@@ -1,7 +1,7 @@
 import {
-  USER_SIGNUP_REQUEST,
-  USER_SIGNUP_SUCCESS,
-  USER_SIGNUP_FAILURE,
+  SIGNUP_REQUEST,
+  SIGNUP_SUCCESS,
+  SIGNUP_FAILURE,
 } from '../../actionTypes';
 
 const initialState = {
@@ -12,16 +12,16 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case USER_SIGNUP_REQUEST:
+    case SIGNUP_REQUEST:
       return { ...state, isLoading: true };
-    case USER_SIGNUP_SUCCESS:
+    case SIGNUP_SUCCESS:
       return {
         ...state,
         signedUp: true,
         isLoading: false,
         error: null,
       };
-    case USER_SIGNUP_FAILURE:
+    case SIGNUP_FAILURE:
       return {
         ...state,
         isLoading: false,

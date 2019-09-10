@@ -1,26 +1,26 @@
-import httpClient from '../../helpers/index';
+import fetchData from '../../helpers/index';
 import {
-  USER_SIGNUP_REQUEST,
-  USER_SIGNUP_SUCCESS,
-  USER_SIGNUP_FAILURE,
+  SIGNUP_REQUEST,
+  SIGNUP_SUCCESS,
+  SIGNUP_FAILURE,
 } from '../../actionTypes';
 
 export default (user) => async (dispatch) => {
-  dispatch({ type: USER_SIGNUP_REQUEST });
+  dispatch({ type: SIGNUP_REQUEST });
 
   try {
-    const { data } = await httpClient('post', '/api/v1/users/create', user);
+    const { data } = await fetchData('post', '/api/v1/users/create', user);
 
     localStorage.setItem('token', data.userToken);
     localStorage.setItem('username', data.user.userName);
-    dispatch({ type: USER_SIGNUP_SUCCESS });
+    dispatch({ type: SIGNUP_SUCCESS });
   } catch (err) {
     const {
       data: { error },
     } = err.response;
 
     dispatch({
-      type: USER_SIGNUP_FAILURE,
+      type: SIGNUP_FAILURE,
       error,
     });
   }

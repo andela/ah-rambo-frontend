@@ -2,20 +2,12 @@ import ReduxThunk from 'redux-thunk';
 import configureStore from 'redux-mock-store';
 import moxios from 'moxios';
 import signupAction from './signupAction';
+import { newUser } from '../../helpers/mockData';
 import {
-  USER_SIGNUP_REQUEST,
-  USER_SIGNUP_SUCCESS,
-  USER_SIGNUP_FAILURE,
+  SIGNUP_REQUEST,
+  SIGNUP_SUCCESS,
+  SIGNUP_FAILURE,
 } from '../../actionTypes';
-
-const MOCK_USER = {
-  firstName: 'John',
-  lastName: 'Doe',
-  userName: 'john101',
-  email: 'john@doe.com',
-  password: 'john@doe.com',
-  confirmPassword: 'john@doe.com',
-};
 
 describe('Signup Action Creators', () => {
   const mockStore = configureStore([ReduxThunk]);
@@ -27,11 +19,11 @@ describe('Signup Action Creators', () => {
     const store = mockStore({});
 
     const token = 'token';
-    const user = { ...MOCK_USER };
+    const user = { ...newUser };
 
     const expectedActions = [
-      { type: USER_SIGNUP_REQUEST },
-      { type: USER_SIGNUP_SUCCESS },
+      { type: SIGNUP_REQUEST },
+      { type: SIGNUP_SUCCESS },
     ];
 
     moxios.wait(() => {
@@ -46,12 +38,12 @@ describe('Signup Action Creators', () => {
   it('returns failure when request fails', async () => {
     const store = mockStore({});
 
-    const user = { ...MOCK_USER };
+    const user = { ...newUser };
     delete user.confirmPassword;
 
     const expectedActions = [
-      { type: USER_SIGNUP_REQUEST },
-      { type: USER_SIGNUP_FAILURE, error: undefined },
+      { type: SIGNUP_REQUEST },
+      { type: SIGNUP_FAILURE, error: undefined },
     ];
 
     moxios.wait(() => {

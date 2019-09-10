@@ -6,7 +6,7 @@ import './TopNav.scss';
 const TopNav = ({ user }) => (
   <nav className="Header__nav">
     <ul className="Header__nav__list">
-      {user && (
+      {Object.keys(user).length ? (
         <>
           <li className="Header__nav__item user">
             <Link to="/profile">
@@ -17,8 +17,7 @@ const TopNav = ({ user }) => (
             <Link to="/login">Logout</Link>
           </li>
         </>
-      )}
-      {!user && (
+      ) : (
         <>
           <li className="Header__nav__item signup">
             <Link to="/signup">Sign up</Link>

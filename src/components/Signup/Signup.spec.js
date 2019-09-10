@@ -1,23 +1,12 @@
 import CheckPropTypes from 'check-prop-types';
 import { Signup } from './Signup';
-import Form from '../Form/Form';
-import Input from '../Input/Input';
-import Button from '../Button/Button';
-
-const MOCK_USER = {
-  firstName: 'John',
-  lastName: 'Doe',
-  userName: 'john101',
-  email: 'john@doe.com',
-  password: 'john@doe.com',
-  confirmPassword: 'john@doe.com',
-};
+import { newUser } from '../../helpers/mockData';
+import { Button, Form, Input } from '../common';
 
 const setup = (propsOverride) => {
   const props = {
-    signupReducer: {},
+    signup: {},
     signupAction: jest.fn(),
-    history: { push: jest.fn() },
     ...propsOverride,
   };
 
@@ -58,7 +47,7 @@ describe('Signup Component Rendering', () => {
 
   it('renders signup error when signup request fails', () => {
     const { wrapper, props } = setup({
-      signupReducer: {
+      signup: {
         signedUp: false,
         isLoading: false,
         error: 'email has been taken',
@@ -67,8 +56,8 @@ describe('Signup Component Rendering', () => {
     const classInstance = wrapper.instance();
     const state = { ...classInstance.state };
 
-    state.errors.signup = props.signupReducer.error;
-    state.data = { ...MOCK_USER };
+    state.errors.signup = props.signup.error;
+    state.data = { ...newUser };
     wrapper.setState({ data: state.data });
     classInstance.setState({ errors: state.errors });
 
@@ -77,8 +66,8 @@ describe('Signup Component Rendering', () => {
   });
 
   it('renders "Please wait..." on button when request is initiated', () => {
-    const { wrapper, props } = setup({
-      signupReducer: { signedUp: false, isLoading: true },
+    const { wrapper } = setup({
+      signup: { signedUp: false, isLoading: true },
     });
     const buttonWrapper = wrapper
       .find('Form')
@@ -87,7 +76,7 @@ describe('Signup Component Rendering', () => {
       .dive()
       .find('button');
 
-    wrapper.setState({ data: MOCK_USER });
+    wrapper.setState({ data: newUser });
     wrapper
       .find('Form')
       .dive()
@@ -136,9 +125,9 @@ describe('Signup Component Interactivity', () => {
 
   it('redirect user to profile page when signup request is successful', () => {
     const { wrapper, props } = setup({
-      signupReducer: { signedUp: true, isLoading: false },
+      signup: { signedUp: true, isLoading: false },
     });
-    wrapper.setState({ data: MOCK_USER });
+    wrapper.setState({ data: newUser });
     wrapper
       .find('Form')
       .dive()
