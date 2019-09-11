@@ -1,3 +1,4 @@
+/* eslint-disable require-jsdoc */
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Form.scss';
@@ -9,7 +10,7 @@ const Form = ({ className, children, onSubmit }) => (
 );
 
 Form.defaultProps = {
-  className: '',
+  className: 'form',
 };
 
 Form.propTypes = {

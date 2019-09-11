@@ -1,18 +1,11 @@
-import ReduxThunk from 'redux-thunk';
-import configureStore from 'redux-mock-store';
-import { Link } from 'react-router-dom';
 import CheckPropTypes from 'check-prop-types';
-import moxios from 'moxios';
-import getUserProfile from '../../actions/user/getUserProfile';
 import { Header } from './Header';
 import TopNav from '../TopNav/TopNav';
 import SearchForm from '../SearchForm/SearchForm';
-import { GET_USER_PROFILE } from '../../actionTypes';
 
 const setup = (propsOverride) => {
   const props = {
-    user: null,
-    getUserProfile: jest.fn(),
+    user: {},
     ...propsOverride,
   };
 
@@ -49,41 +42,6 @@ describe('Header Component', () => {
       );
 
       expect(propsError).toBeUndefined();
-    });
-  });
-
-  describe('Interaction with Redux Store', () => {
-    beforeEach(() => {
-      moxios.install();
-    });
-
-    afterEach(() => {
-      moxios.uninstall();
-    });
-
-    const middleware = [ReduxThunk];
-    const mockStore = configureStore(middleware);
-
-    it('dispatch getUserProfile function when it mounts', () => {
-      const store = mockStore({});
-      const expectedState = {
-        firstName: 'John',
-        lastName: 'Doe',
-      };
-
-      moxios.wait(() => {
-        const request = moxios.requests.mostRecent();
-
-        request.respondWith({
-          status: 200,
-          response: expectedState,
-        });
-      });
-
-      return store.dispatch(getUserProfile()).then(() => {
-        const actions = store.getActions();
-        expect(actions[0].type).toBe(GET_USER_PROFILE);
-      });
     });
   });
 });
