@@ -1,0 +1,145 @@
+@import '../../styles/variables.scss';
+
+.avatar {
+  height: 2.7rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.article-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 2% 0;
+}
+
+.article {
+  max-width: 700px;
+}
+
+.article-title-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.article-title {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.article-edit-display {
+  font-weight: bolder;
+  font-size: 20px;
+  width: 25px;
+  position: relative;
+  display: inline-block;
+}
+
+.article-edit-display .article-tooltip {
+  width: 120px;
+  color: $matterhornColor;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  text-align: left;
+  position: absolute;
+  z-index: 1;
+  top: -6px;
+  left: 130%;
+  font-size: 1rem;
+  padding: 5px 10px;
+  font-weight: normal;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.tooltip-edit {
+  padding-bottom: 3px;
+}
+
+.tooltip-edit:hover, .tooltip-delete:hover {
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.article-edit-display .article-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -7px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent #505050 transparent transparent;
+}
+
+.article-edit-display:hover .article-tooltip {
+  opacity: 1;
+}
+
+.article-author {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.article-author-details {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.article-author-name {
+  cursor: pointer;
+}
+
+.article-author-name:hover {
+  font-weight: 900;
+}
+
+.reading-time {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 18px 0 0 10px;
+}
+
+.article-image {
+  max-width: 700px;
+  max-height: 400px;
+}
+
+.article-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px 0;
+  line-height: 2rem;
+}
+
+.tags {
+  display: flex;
+  margin: 20px 0;
+}
+
+.article-tag {
+  border: 1px solid rgba(#505050, 0.5);
+  color: $mustardColor;
+  padding: 5px 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+
+@media (min-width: 768px) {
+  .article {
+    width: 800px;
+  }
+  .article-image {
+    width: 800px;
+    max-height: 400px;
+  }
+}
+
