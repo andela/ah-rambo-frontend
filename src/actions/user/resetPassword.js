@@ -23,7 +23,7 @@ export const failure = (error) => ({
 export const resetPasswordAction = (body, passwordResetToken) => async (dispatch) => {
   dispatch(resetPassword());
   try {
-    const { data } = await http('patch', `/api/v1/users/resetpassword/${passwordResetToken}`, body);
+    const { data } = await http('patch', `/users/resetpassword/${passwordResetToken}`, body);
     dispatch(success(data));
   } catch (err) {
     const { response: { data } } = err;

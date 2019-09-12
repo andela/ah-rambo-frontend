@@ -159,4 +159,83 @@ describe('Reset Password Component Functionality Tests', () => {
 
     expect(classInstance.props.message).toEqual(classInstance.state.response.message)
   })
+
+  it('gets the users password details and calls resetpassword funtion', () => {
+    const state = {
+      password: 'password',
+      confirmPassword: 'password',
+      token: 'token',
+      confirmPasswordError: false,
+      passwordError: false
+    };
+
+    const props = {
+      error: false,
+      message: 'invalid password',
+      resetPassword: jest.fn(),
+      location: { search: 'token' }
+    };
+
+    const component = shallow(<ResetPassword {...props} />);
+
+    component.setState({ password: state.password });
+    component.setState({ confirmPassword: state.confirmPassword });
+    component.setState({ token: state.token });
+    component.setState({ passwordError: state.passwordError });
+    component.setState({ confirmPasswordError: state.confirmPasswordError });
+
+    const Form = component.find('Form');
+    Form.simulate('submit', { preventDefault: jest.fn });
+    expect(component.state('password')).toEqual(state.password);
+    expect(component.state('confirmPassword')).toEqual(state.confirmPassword);
+    expect(props.resetPassword).toHaveBeenCalled();
+  });
+
+  it('gets errors from props after calling the function', () => {
+    const state = {
+      password: 'password',
+      confirmPassword: 'password',
+      token: 'token',
+      confirmPasswordError: false,
+      passwordError: false
+    };
+
+    const props = {
+      error: 'error',
+      message: 'invalid password',
+      resetPassword: jest.fn(),
+      location: { search: 'token' }
+    };
+
+    const component = shallow(<ResetPassword {...props} />);
+
+    component.setState({ password: state.password });
+    component.setState({ confirmPassword: state.confirmPassword });
+    component.setState({ token: state.token });
+    component.setState({ passwordError: state.passwordError });
+    component.setState({ confirmPasswordError: state.confirmPasswordError });
+
+    const Form = component.find('Form');
+    Form.simulate('submit', { preventDefault: jest.fn });
+    expect(component.state('token')).toEqual(state.token);
+    expect(component.state('passwordError')).toEqual(state.passwordError);
+    expect(props.resetPassword).toHaveBeenCalled();
+  });
+
+  it('gets loading state and displays it', () => {
+
+    const props = {
+      isLoading: true,
+      error: 'error',
+      message: 'invalid password',
+      resetPassword: jest.fn(),
+      location: { search: 'token' }
+    };
+
+    const component = shallow(<ResetPassword {...props} />);
+
+
+    const button = component.find('Button');
+    expect(button.props().label).toEqual('Please wait...');
+  });
 });

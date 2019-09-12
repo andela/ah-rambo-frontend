@@ -11,8 +11,8 @@ const Footer = () => (
         <img className="footer__mail-icon" src={MailIcon} alt="email" />
       </figure>
       <div className="footer__email">
-        <p>CONTACT US</p>
-        <p>authorshaven@gmail.com</p>
+        <p className="footer__contact">CONTACT US</p>
+        <p className="footer__contact">authorshaven@gmail.com</p>
       </div>
     </div>
     <p className="footer__copyright-info">&copy; 2019 AUTHORS HAVEN</p>

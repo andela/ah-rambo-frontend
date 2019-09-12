@@ -11,7 +11,7 @@ module.exports = merge(commonConfig, {
 
   plugins: [
     new CleanWebpackPlugin(),
-    new Webpack.EnvironmentPlugin({ NODE_ENV: 'production' })
+    new Webpack.EnvironmentPlugin(['NODE_ENV', 'SERVER_URL'])
   ],
 
   optimization: {

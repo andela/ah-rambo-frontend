@@ -1,12 +1,14 @@
 import axios from 'axios';
+import { getFromStorage } from './storageHelper';
 
-const fetchData = async (method, url, data) => {
-  axios.defaults.baseURL = 'https://authors-haven-development.herokuapp.com';
-  axios.defaults.headers.common.Authorization = localStorage.getItem('token');
+const fetchData = async (method, url, data, config) => {
+  axios.defaults.baseURL = process.env.SERVER_URL;
+  axios.defaults.headers.common.Authorization = getFromStorage('token');
   const response = await axios({
     method,
     url,
     data,
+    config
   });
   return response;
 };
