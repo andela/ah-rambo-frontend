@@ -32,8 +32,9 @@ Input.defaultProps = {
   className: '',
   onChange: () => {},
   onFocus: () => {},
-  error: '',
+  error: ''
 };
+
 
 Input.propTypes = {
   type: PropTypes.string.isRequired,
@@ -45,5 +46,6 @@ Input.propTypes = {
   onFocus: PropTypes.func,
   error: PropTypes.string,
 };
+
 
 export default Input;

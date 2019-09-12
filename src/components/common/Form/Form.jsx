@@ -15,7 +15,8 @@ Form.defaultProps = {
 
 Form.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.array.isRequired,
+  children: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes
+    .object, PropTypes.node])).isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 

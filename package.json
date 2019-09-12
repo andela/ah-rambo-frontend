@@ -44,6 +44,7 @@
     "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
+    "axios-mock-adapter": "^1.17.0",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "check-prop-types": "^1.1.2",
