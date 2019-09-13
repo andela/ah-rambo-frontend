@@ -3,10 +3,14 @@ import loginReducer from './user/login';
 import signup from './user/signupReducer';
 import resetPassword from './user/resetPassword';
 import requestPassword from './user/requestPassword';
+import article from './article/article';
+import user from './user/user';
 
 export default combineReducers({
   loginReducer,
   signup,
   resetPassword,
-  requestPassword
+  requestPassword,
+  user,
+  article
 });

@@ -32,7 +32,13 @@ const TopNav = ({ user }) => (
 );
 
 TopNav.propTypes = {
-  user: PropTypes.object.isRequired,
+  user: PropTypes.object,
 };
+
+
+TopNav.defaultProps = {
+  user: {}
+};
+
 
 export default TopNav;

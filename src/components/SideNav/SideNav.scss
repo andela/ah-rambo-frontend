@@ -1,0 +1,73 @@
+@import './../../styles/variables.scss';
+.sidenav__options {
+font-family: Montserrat;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 20px;
+margin: 10px;
+color: #000000;
+
+img{
+  padding-right: 10px;
+}
+}
+.sidenav__container {
+  display: flex;
+  &:hover{
+    border: 1px solid #000000;
+  }
+}
+
+.sidenav__container--home{
+  padding-top: 13px;
+}
+.sidenav__container--explore{
+  padding-top: 13px;
+}
+.sidenav__container--notification{
+  padding-top: 13px;
+}
+.sidenav__container--bookmark{
+  padding-top: 13px;
+}
+.home{
+  height: 22px;
+}
+.notification{
+  height: 27px;
+}
+.explore{
+  height: 30px;
+}
+.bookmark{
+  height: 25px;
+}
+
+.sideNav a {
+  color: #000000;
+
+}
+
+
+@media (max-width: 768px) {
+  .sidenav__options{
+    padding: 0px 30px;
+  }
+  .item-text {
+    margin-left: 30px;
+  }
+}
+
+
+.sideNav {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #FFFFFF;
+  height: 100%;
+}
+
+
+
+
+
+

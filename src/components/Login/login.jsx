@@ -27,12 +27,12 @@ export class Login extends Component {
     }
   };
 
-  handleChange = (e) => {
+  handleChange = e => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
-  }
+  };
 
-  handleFocus =() => {
+  handleFocus = () => {
     this.setState({ errors: { userLogin: '', password: '', server: '' } });
   }
 
@@ -133,11 +133,14 @@ Login.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   error: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
-  login: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired
 };
 
 export const mapState = (state) => state.loginReducer;
 const actionCreators = {
   login
 };
-export default connect(mapState, actionCreators)(Login);
+export default connect(
+  mapState,
+  actionCreators
+)(Login);

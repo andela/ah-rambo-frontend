@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import getUserDetails from '../../actions/user/getUserDetails';
 import SearchForm from '../SearchForm/SearchForm';
 import TopNav from '../TopNav/TopNav';
 import './Header.scss';
@@ -17,13 +18,21 @@ import './Header.scss';
 export class Header extends Component {
   /**
    *
+   * @returns {object} Authenticated user profile object
+   * @memberof Header
+   */
+  componentDidMount() {
+    this.props.getUserDetails();
+  }
+
+  /**
+   *
    *
    * @returns {HTML} HTML markup of the Header
    * @memberof Header
    */
   render() {
     const { user } = this.props;
-
     return (
       <header className="Header">
         <div className="Header__logo">
@@ -32,7 +41,6 @@ export class Header extends Component {
             <span className="mustard"> Haven</span>
           </Link>
         </div>
-
         <TopNav user={user} />
         <SearchForm />
       </header>
@@ -46,10 +54,14 @@ Header.defaultProps = {
 
 Header.propTypes = {
   user: PropTypes.object,
+  getUserDetails: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  user: state.user,
+  user: state.user.userData,
 });
 
-export default connect(mapStateToProps)(Header);
+export default connect(
+  mapStateToProps,
+  { getUserDetails }
+)(Header);

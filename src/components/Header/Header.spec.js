@@ -1,11 +1,14 @@
 import CheckPropTypes from 'check-prop-types';
+import moxios from 'moxios';
+import getUserDetails from '../../actions/user/getUserDetails';
 import { Header } from './Header';
 import TopNav from '../TopNav/TopNav';
 import SearchForm from '../SearchForm/SearchForm';
 
 const setup = (propsOverride) => {
   const props = {
-    user: {},
+    user: null,
+    getUserDetails: jest.fn(),
     ...propsOverride,
   };
 

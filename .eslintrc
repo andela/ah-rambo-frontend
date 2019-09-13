@@ -26,6 +26,7 @@
     "no-unused-vars": 0,
     "no-tabs": 0,
     "react/jsx-filename-extension": 0,
+    "react/no-array-index-key": 0,
     "curly": ["error", "multi-line"],
     "import/no-unresolved": 1,
     "react/no-unknown-property": [2, { "ignore": ["class", "for"] }],
