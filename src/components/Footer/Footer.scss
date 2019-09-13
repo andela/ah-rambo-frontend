@@ -20,6 +20,13 @@
   display: flex;
   align-items: center;
   font-size: 6px;
+  flex-basis: 30%;
+}
+
+.footer__contact,
+.footer__follow-text {
+  margin: inherit;
+  text-decoration: underline;
 }
 
 .footer__contact-icon {
