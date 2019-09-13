@@ -1,7 +1,250 @@
-.test {
-  font: {
-    weight: bolder;
-    style: italic;
+@import '../../styles/variables.scss';
+.vertical-container {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  font-family: Montserrat;
+  justify-content: space-between;
+  letter-spacing: 0.02vw;
+  line-height: 1.4vw;
+  font-weight: 300;
+  .fig-bottom-container {
+    width: 80%;
   }
-  text-align: center;
+  .like-dislike {
+    width: 70px;
+    align-items: flex-end;
+    display: inline-flex;
+    justify-content: space-between;
+  }
+  figcaption {
+    flex-wrap: wrap;
+  }
+  .description {
+    margin: 20px 0;
+    -webkit-line-clamp: 4;
+    min-height: 5vw;
+  }
+  .figure-image {
+    max-width: 100%;
+  }
+  .cards {
+    flex-basis: 23.5%;
+    padding: 10px;
+  }
+}
+
+.like::after {
+  content: '\f164';
+  font-family: 'Font Awesome\ 5 Free';
+  padding: 0 3px;
+}
+
+.dislike::after {
+  content: '\f165';
+  font-family: 'Font Awesome\ 5 Free';
+  padding: 0 3px;
+}
+
+.article-card-link:hover,
+.card:hover,
+.card:active,
+.article-card-link:active {
+  box-shadow: 0 1px 1px 0 $greyColor;
+}
+
+.profile {
+  width: 4.5vw;
+  height: 4.5vw;
+  border-radius: 100%;
+  max-height: 2.8vw;
+  max-width: 3vw;
+}
+
+.cards {
+  flex-shrink: 0;
+}
+
+.fig-bottom {
+  justify-content: center;
+}
+
+.fig-bottom p {
+  font-size: 12px;
+  margin: 2px 0 2px 5px;
+}
+.author {
+  font-weight: 700;
+}
+
+.description {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+h6 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 5px 0;
+}
+
+.column {
+  flex-direction: column;
+}
+.row {
+  flex-direction: row;
+}
+.fig-bottom-container {
+  justify-content: space-between;
+  line-height: 1;
+}
+figure {
+  margin: 0;
+}
+
+.flex {
+  display: flex;
+}
+
+.first-section-container {
+  justify-content: space-between;
+  font-family: Montserrat;
+  letter-spacing: 0.01vw;
+  font-weight: 300;
+  flex-wrap: wrap;
+  .fig-bottom-container p {
+    margin-bottom: 0;
+  }
+  .like-dislike span {
+    margin-left: 4px;
+  }
+  .fig-bottom-container {
+    align-items: flex-end;
+  }
+  .description {
+    margin: 5px 0 0 0;
+    -webkit-line-clamp: 3;
+    min-height: 47px;
+  }
+  .figure-image {
+    width: 250px;
+    height: 100%;
+  }
+  .cards {
+    margin: 0 0 40px 0;
+    height: 180px;
+  }
+}
+
+.big-card {
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0 5px 10px 5px;
+  width: 500px;
+  height: 640px;
+
+  .description {
+    margin: 10px 0;
+  }
+  h6 {
+    margin-top: 15px;
+  }
+  figcaption {
+    justify-content: space-between;
+    height: 100%;
+  }
+  .fig-bottom-container {
+    .like-dislike {
+      align-items: flex-end;
+    }
+  }
+}
+.container-padding {
+  padding: 0 10%;
+  justify-content: center;
+}
+.home-container section {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.first-section-right {
+  height: 630px;
+  flex-basis: 55%;
+  margin-left: 20px;
+  .fig-bottom-container {
+    align-items: flex-end;
+  }
+}
+
+.cards {
+  flex-shrink: 0;
+}
+
+.top-image {
+  width: 100%;
+  height: 450px;
+}
+
+.figcaption {
+  padding: 0 20px;
+  min-width: 400px;
+  width: 75%;
+  justify-content: space-around;
+}
+
+.category {
+  .card {
+    padding: 5px 5px 0 5px;
+    position: relative;
+    display: inline-block;
+  }
+  .image {
+    width: 300px;
+    height: 250px;
+    filter: brightness(0.5);
+  }
+  padding: 0 200px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  .text {
+    position: absolute;
+    z-index: 999;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 40%;
+    text-align: center;
+    width: 60%;
+    color: $mustardColor;
+    text-shadow: 1px 1px 1px $matterhornColor;
+  }
+}
+hr {
+  border-top: 1px solid #d9d9d9;
+}
+.category-nav {
+  padding: 0 5%;
+  li {
+    list-style: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 14px;
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 18px;
+    margin: 20px 5px 10px 5px;
+  }
+
+  li:hover {
+    text-decoration: underline;
+  }
+
+  ul {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
 }

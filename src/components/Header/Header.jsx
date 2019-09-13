@@ -25,17 +25,20 @@ export class Header extends Component {
     const { user } = this.props;
 
     return (
-      <header className="Header">
-        <div className="Header__logo">
-          <Link to="/">
-            Authors
-            <span className="mustard"> Haven</span>
-          </Link>
-        </div>
+      <>
+        <header className="Header">
+          <div className="Header__logo">
+            <Link to="/">
+              Authors
+              <span className="mustard"> Haven</span>
+            </Link>
+          </div>
 
-        <TopNav user={user} />
-        <SearchForm />
-      </header>
+          <TopNav user={user} />
+          <SearchForm />
+        </header>
+        <hr />
+      </>
     );
   }
 }

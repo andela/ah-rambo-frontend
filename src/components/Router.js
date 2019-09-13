@@ -10,6 +10,9 @@ const Router = () => (
     <Route exact path="/" component={Home} />
     <Route path="/login" component={Login} />
     <Route path="/reset-password/" component={ResetPassword} />
+    <Route exact path="/category" component={Login} />
+    <Route path="/category/:name" component={Signup} />
+    <Route path="/article/:slug" component={Signup} />
     <Route component={NotFound} />
   </Switch>
 );

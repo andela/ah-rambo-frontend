@@ -1,5 +1,5 @@
 @import 'variables.scss';
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,500,700&display=swap');
 
 $font-family-base: 'Montserrat', sans-serif;
 
@@ -112,21 +112,22 @@ input[type='password'] {
     border: 1px solid $matterhornColor;
     cursor: pointer;
   }
-  &:disabled{
-    cursor:not-allowed;
+  &:disabled {
+    cursor: not-allowed;
     color: $whiteColor;
     background-color: $greyColor;
     border: none;
   }
 }
 
-
 .footer {
   background-color: rgba(0, 0, 0, 0.05);
   color: $matterhornColor;
   min-width: fit-content;
+  padding-left: 100px;
+  padding-right: 100px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   height: 60px;
 }
 
@@ -170,7 +171,5 @@ input[type='password'] {
   }
 }
 .has-validation-error {
-    border-color:$redColor !important;
+  border-color: $redColor !important;
 }
-
-
