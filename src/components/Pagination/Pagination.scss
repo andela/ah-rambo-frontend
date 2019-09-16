@@ -1,0 +1,33 @@
+@import '../../styles/variables.scss';
+.pagination{
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  color: black;
+  cursor: pointer;
+}
+
+.active{
+margin: 0px 5px;
+color: $mustardColor;
+&:hover{
+  color: black;
+  cursor: pointer;
+}
+}
+
+.non-active{
+  margin: 0px 5px;
+  color: black;
+  &:hover{
+    color: $mustardColor
+  }
+}
+
+.navigation-back .navigation-next{
+  margin: 0px 5px;
+  &:hover{
+    color: $mustardColor;
+  }
+}
+

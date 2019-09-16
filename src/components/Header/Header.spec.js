@@ -44,4 +44,25 @@ describe('Header Component', () => {
       expect(propsError).toBeUndefined();
     });
   });
+
+  describe('', () => {
+    const e = {
+      preventDefault: jest.fn()
+    };
+    const props={
+      history: {
+        push: jest.fn()
+      },
+      user: {},
+      searchStartRequest: jest.fn()
+    }
+    it('does handle a search event ', () => {
+      const { wrapper }= setup(props);
+      const instance = wrapper.instance();
+      instance.handleSubmit(e);
+      expect(props.history.push).toHaveBeenCalled();
+      expect(props.searchStartRequest).toHaveBeenCalled();
+      expect(e.preventDefault).toHaveBeenCalled();
+    });
+  });
 });
