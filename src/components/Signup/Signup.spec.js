@@ -1,6 +1,6 @@
 import CheckPropTypes from 'check-prop-types';
 import { Signup } from './Signup';
-import { newUser } from '../../helpers/mockData';
+import { newUser } from '../../helpers/__mocks__/userData';
 import { Button, Form, Input } from '../common';
 
 const setup = (propsOverride) => {

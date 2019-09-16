@@ -2,7 +2,7 @@ import ReduxThunk from 'redux-thunk';
 import configureStore from 'redux-mock-store';
 import moxios from 'moxios';
 import signupAction from './signupAction';
-import { newUser } from '../../helpers/mockData';
+import { newUser } from '../../helpers/__mocks__/userData';
 import {
   SIGNUP_REQUEST,
   SIGNUP_SUCCESS,

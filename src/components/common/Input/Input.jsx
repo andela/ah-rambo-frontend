@@ -11,6 +11,10 @@ const Input = ({
   onChange,
   onFocus,
   error,
+  onBlur,
+  onKeyPress,
+  required,
+  list,
 }) => (
   <div className="form-field">
     <input
@@ -22,7 +26,11 @@ const Input = ({
       className={className}
       onChange={onChange}
       onFocus={onFocus}
+      onBlur={onBlur}
       error={error}
+      required={required}
+      list={list}
+      onKeyPress={onKeyPress}
     />
     {error && <span className="input-validation-error">{error}</span>}
   </div>
@@ -30,9 +38,13 @@ const Input = ({
 
 Input.defaultProps = {
   className: '',
+  required: false,
   onChange: () => {},
   onFocus: () => {},
-  error: ''
+  onBlur: () => {},
+  onKeyPress: () => {},
+  error: '',
+  list: '',
 };
 
 
@@ -43,8 +55,12 @@ Input.propTypes = {
   placeholder: PropTypes.string.isRequired,
   className: PropTypes.string,
   onChange: PropTypes.func,
+  onKeyPress: PropTypes.func,
   onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
   error: PropTypes.string,
+  list: PropTypes.string,
+  required: PropTypes.bool,
 };
 
 

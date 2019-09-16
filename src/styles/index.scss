@@ -1,13 +1,9 @@
 @import 'variables.scss';
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
-
-$font-family-base: 'Montserrat', sans-serif;
 
 *,
 *:before,
 *:after {
   box-sizing: border-box;
-  font-family: $font-family-base;
   outline: 0;
 }
 
@@ -128,6 +124,7 @@ input[type='password'] {
   display: flex;
   justify-content: space-around;
   height: 60px;
+  font-family: $font-family-base;
 }
 
 @media (min-width: 425px) {
