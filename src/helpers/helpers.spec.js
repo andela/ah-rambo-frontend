@@ -1,6 +1,7 @@
 import fetchData from '.';
 import moxios from 'moxios';
 import * as store from './storageHelper';
+import { isEmpty, dateFormatter, getReadTime } from './utils';
 
 describe('API call helper test', () => {
   beforeEach(function() {
@@ -58,4 +59,26 @@ describe('Local Storage Helper Tests', () => {
     expect(spy).toHaveBeenCalled();
     spy.mockRestore();
   });
+})
+
+describe('Utils test', () => {
+  it('tests the isEmpty function', () => {
+    const value = isEmpty({});
+    expect(value).toBe(true)
+  })
+
+  it('tests the isEmpty function', () => {
+    const value = isEmpty({firstname: 'Rambo'});
+    expect(value).toBe(false)
+  })
+
+  it('tests the date formatter function', () => {
+    const formattedDate = dateFormatter('2019-09-13T15:21:22.081Z');
+    expect(formattedDate).toEqual('Sep 13 2019');
+  })
+
+  it("gets an article's read time", () => {
+    const readTime = getReadTime('this is a demo article');
+    expect(readTime).toEqual(1);
+  })
 })
