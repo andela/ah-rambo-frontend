@@ -1,18 +1,20 @@
+/* eslint-disable react/button-has-type */
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Button.scss';
 
 const Button = ({
-  className, title, disabled, name, label, onClick
+  className, title, disabled, name, label, onClick, type, onPointerDown
 }) => (
   <button
-    type="submit"
+    type={type}
     name={name}
     id={name}
     className={className}
     title={title}
     disabled={disabled}
     onClick={onClick}
+    onPointerDown={onPointerDown}
   >
     {label}
   </button>
@@ -23,6 +25,8 @@ Button.defaultProps = {
   disabled: false,
   name: '',
   onClick: () => {},
+  onPointerDown: () => {},
+  type: 'submit'
 };
 
 Button.propTypes = {
@@ -30,8 +34,10 @@ Button.propTypes = {
   title: PropTypes.string,
   disabled: PropTypes.bool,
   name: PropTypes.string,
-  label: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   onClick: PropTypes.func,
+  onPointerDown: PropTypes.func
 };
 
 export default Button;

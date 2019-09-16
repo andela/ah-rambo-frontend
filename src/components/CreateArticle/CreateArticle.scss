@@ -1,0 +1,412 @@
+@import '../../styles/index.scss';
+
+.editor {
+  min-height: 200px;
+  padding: 20px;
+}
+
+.editor-container {
+  max-width: 65em;
+  margin: 62px auto;
+}
+
+.text-container {
+  padding: 20px;
+  min-height: 45em;
+  box-shadow: $greyColor 0px 4px 4px 0px, $greyColor 0px -0.2px 0px 0px;
+}
+
+.toolbar {
+  display: flex;
+  border-bottom: solid 1.7px rgba(199, 198, 255, 0.15);
+  padding: 10px 0;
+  margin: 0 0 20px 0;
+}
+
+.text-container ul,
+.text-container li {
+  list-style: initial !important;
+  margin: 5px 10px;
+}
+
+.text-container ol,
+.text-container ol li {
+  list-style-type: decimal !important;
+  margin: 5px 10px;
+}
+
+button::after {
+  border: 1px solid $matterhornColor;
+}
+
+.tools {
+  border: none;
+  margin: 0 7px;
+  cursor: pointer;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+code:not(pre) {
+  background-color: #eee;
+  padding: 3px;
+}
+
+blockquote {
+  border-left: 2px solid $greyColor;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 10px;
+  color: $greyColor;
+  font-style: italic;
+}
+
+.darken {
+  font-weight: 700;
+  color: $matterhornColor;
+}
+
+.lighten {
+  font-weight: 300;
+  color: $greyColor;
+  background: none;
+}
+
+.editor-title {
+  text-indent: 5px;
+  font-size: 20px;
+  margin: 10px 0 0 0;
+  border: 1px solid $greyColor;
+}
+
+.image-input {
+  display: block;
+  position: relative;
+  border: $greyColor dashed 2px;
+  width: 100%;
+
+  min-height: 100px;
+  margin-top: 2px;
+}
+.image-input input[type='file'] {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.image-placeholder {
+  text-align: center;
+  width: 100%;
+  font-size: 30px;
+  height: auto;
+  vertical-align: bottom;
+}
+
+.btn-article {
+  margin: 20px auto 10.5vh auto !important;
+}
+
+.btn-article-container {
+  text-align: right;
+}
+
+.btn-remove {
+  display: block;
+  border: none;
+  float: right;
+  position: relative;
+  height: 40px;
+  z-index: 2;
+  color: $whiteColor;
+
+  bottom: 40px;
+
+  background-color: $matterhornColor;
+}
+.noDisplay {
+  display: none;
+}
+
+.full-height {
+  height: 100%;
+}
+.content-height {
+  height: fit-content;
+}
+
+.flex {
+  display: flex;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.article-card-container {
+  flex-basis: 50%;
+  margin-bottom: 20vh;
+}
+
+.article-card {
+  margin: 0 50px;
+  padding: 50px;
+  min-height: 500px;
+  box-shadow: $greyColor 0px 4px 4px 0px, $greyColor 0px -0.2px 0px 0px;
+}
+
+.other-article-details-container {
+  flex-basis: 50%;
+  padding: 0 50px;
+}
+
+.tags-block,
+.category-block {
+  display: flex;
+  margin: 0 auto;
+  flex-basis: 70%;
+  width: 100%;
+}
+
+.tags-block,
+.category-block,
+.description-block {
+  flex-direction: column;
+}
+
+.other-article-details * {
+  font-size: 18px;
+}
+
+.article-title-preview {
+  overflow: auto;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: horizontal;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.article-title-preview span {
+  text-align: left;
+}
+
+.article-title-preview div {
+  flex-basis: 80%;
+  padding: 0 10px;
+}
+
+.article-body-preview {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  min-height: 70px;
+  max-width: 600px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+input {
+  min-height: 20px;
+  width: 300px;
+  padding: 4px;
+  border: 1.3px solid $matterhornColor;
+  background-color: $whiteColor;
+}
+
+select {
+  width: 312px;
+  height: 30px;
+  padding: 0 0 0 10px;
+  border: 1.3px solid $matterhornColor;
+  background-color: $whiteColor;
+  border-radius: 0;
+}
+
+textarea {
+  width: 98%;
+  height: 150px;
+  border: 1.3px solid $matterhornColor;
+  background-color: $whiteColor;
+  padding-left: 5px;
+}
+.input-text {
+  min-width: 100px;
+}
+
+.btn-md {
+  height: 50px;
+  width: 200px;
+}
+
+.btn-wrapper .btn {
+margin: 10px;
+}
+.btn-wrapper {
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.mustard-text {
+  color: $mustardColor;
+}
+
+.center {
+  text-align: center;
+}
+
+.center-element {
+  margin: 0 auto;
+}
+
+.big-font {
+  font-size: 18px;
+}
+
+.bold {
+  font-weight: 500;
+}
+
+.edit-btn-wrapper {
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.tag-cards {
+  border: 1px solid $matterhornColor;
+  color: $mustardColor;
+  padding: 2.5px 4px;
+  margin: 0 10px 10px 0;
+  width: fit-content;
+}
+
+.tag-cards:disabled {
+  background-color: $greyColor;
+}
+
+.tag-cards-close {
+  cursor: pointer;
+  border: none;
+}
+
+.tag-cards-close:hover {
+  text-transform: uppercase;
+}
+
+.tag-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+button:disabled {
+  background-color: $greyColor;
+}
+
+.input-error {
+  font-size: 13px;
+  color: red !important;
+  margin-top: 0;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.input-width {
+  width: 300px;
+}
+
+.btn-wrapper-container {
+  justify-content: space-between;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.footer {
+  bottom: 0;
+  position: relative;
+  width: 100%;
+}
+.MonserratFont {
+  font-family: $font-family-base;
+}
+
+.article-preview-container {
+  margin-top: 60px;
+}
+
+@media screen and (max-width: 1024px) {
+  .btn-md {
+    width: 150px;
+  }
+  .editor-container {
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+  .article-card {
+    margin: 0 20px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .article-card {
+    padding: 35px;
+    max-width: 70%; 
+    margin: auto;
+  }
+  .article-card, .other-article-details-container {
+    width: 95%;
+  }
+  .other-article-details-container {
+    padding: 0;
+    margin: 0 auto;
+  }
+  .article-preview-container {
+    flex-direction: column;
+  }
+  .other-article-details-container, .btn-wrapper-container, .input-text, .other-article-details-container .form-field, select, textarea {
+    margin: 0 auto;
+  }
+  .article-card-container {
+    margin-bottom: 5em;
+  }
+  .tools {
+    margin: 2px;
+  }
+  .toolbar {
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .article-card {
+    max-width: 90%;
+
+  }
+}
+
+@media screen and (max-width: 350px) {
+  select, input, .other-article-details-container .form-field {
+    width: 98%;
+  }
+  textarea {
+    min-width: 90%;
+  }
+  .btn-wrapper-container {
+    flex-direction: column;
+  }
+}
