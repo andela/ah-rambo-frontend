@@ -1,0 +1,26 @@
+.comment-section {
+  margin: 0px auto;
+  box-sizing: border-box;
+  max-width: 800px;
+  p {
+    margin: 20px 0
+  }
+  margin-bottom: 70px
+}
+
+.comment-number{
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.comment-box {
+  border: 2px solid #E8E8E8;
+  min-height: 100px;
+  max-width: 750px;
+  margin: 0px 0px
+}
+
+.view__more__comments {
+  cursor: pointer;
+  user-select: none; 
+}

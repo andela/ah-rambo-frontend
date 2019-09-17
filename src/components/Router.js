@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import {
-  Login, NotFound, Home, Signup, ResetPassword, RequestPassword
+  Login, NotFound, Home, Signup, ResetPassword, RequestPassword, Comment, ReadArticle
 } from './index';
 
 const Router = () => (
@@ -11,6 +11,7 @@ const Router = () => (
     <Route path="/login" component={Login} />
     <Route path="/reset-password/" component={ResetPassword} />
     <Route path="/request-password/" component={RequestPassword} />
+    <Route path="/article/:slug" component={ReadArticle} />
     <Route component={NotFound} />
   </Switch>
 );
