@@ -1,0 +1,15 @@
+.article__search__container {
+  margin: 20px 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+@media (max-width: 770px) {
+  .article__search__container {
+    flex-direction: column;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+  }
+}

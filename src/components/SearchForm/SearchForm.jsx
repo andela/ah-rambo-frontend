@@ -2,13 +2,13 @@ import React from 'react';
 import './SearchForm.scss';
 import { SearchIcon } from '../../../assets/icons';
 
-const SearchForm = () => (
-  <form className="SearchForm">
+const SearchForm = (props) => (
+  <form className="SearchForm" onSubmit={props.handleSubmit}>
     <span className="search-icon">
       <img src={SearchIcon} alt="Search Icon" />
     </span>
 
-    <input className="SearchForm__input" type="search" placeholder="Search" />
+    <input className="SearchForm__input" name="SearchForm" type="search" placeholder="Search" />
   </form>
 );
 

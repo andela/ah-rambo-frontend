@@ -1,0 +1,28 @@
+.search{
+
+  display: flex;
+  flex-direction: column;
+  margin: 0 100px;
+  padding: 0px !important;
+}
+
+@media (min-width: 1200px) {
+  .search {
+    padding: 10px 100px;
+  }
+}
+
+@media (min-width: 777px) {
+  .search {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 770px) {
+  .search {
+    flex-direction: column;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+  }
+}

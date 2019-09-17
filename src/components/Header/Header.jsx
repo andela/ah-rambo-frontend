@@ -1,8 +1,8 @@
-/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { searchStartRequest } from '../../actions/search/search';
 import SearchForm from '../SearchForm/SearchForm';
 import TopNav from '../TopNav/TopNav';
 import './Header.scss';
@@ -15,6 +15,20 @@ import './Header.scss';
  * @extends {Component}
  */
 export class Header extends Component {
+  
+  /**
+   *
+   * @returns {null} routes to the search route
+   * @memberof Header
+   */
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const data = new FormData(e.target);
+    const mydata = data.get('SearchForm');
+    this.props.searchStartRequest(mydata);
+    this.props.history.push('/search');
+  }
+
   /**
    *
    *
@@ -23,7 +37,6 @@ export class Header extends Component {
    */
   render() {
     const { user } = this.props;
-
     return (
       <header className="Header">
         <div className="Header__logo">
@@ -34,7 +47,9 @@ export class Header extends Component {
         </div>
 
         <TopNav user={user} />
-        <SearchForm />
+        <SearchForm
+          handleSubmit={this.handleSubmit}
+        />
       </header>
     );
   }
@@ -50,6 +65,10 @@ Header.propTypes = {
 
 const mapStateToProps = (state) => ({
   user: state.user,
+  search: state.search
 });
 
-export default connect(mapStateToProps)(Header);
+export default connect(
+  mapStateToProps,
+  { searchStartRequest }
+)(withRouter(Header));
