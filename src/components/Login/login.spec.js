@@ -11,6 +11,7 @@ const setup = () => {
   const props = {
     error: {message: 'incorrect username or password' }, 
     login: jest.fn(),
+    authUser: jest.fn(),
     history: { push: jest.fn() }
   };
 
@@ -96,6 +97,7 @@ describe('Login Component interaction', () => {
       isLoading: false,
       login: jest.fn(),
       history: { push: jest.fn() },
+      authUser: jest.fn(),     
       error: null,
     };
 

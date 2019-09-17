@@ -5,9 +5,8 @@ import Joi from 'joi-browser';
 import PropTypes from 'prop-types';
 import signupInputSchema from '../../schemas/signup';
 import signupAction from '../../actions/user/signupAction';
-import {
-  Form, Input, Button, SocialLogin
-} from '../common';
+import { authUser } from '../../actions/auth';
+import { Form, Input, Button, SocialLogin } from '../common';
 import './Signup.scss';
 
 /**
@@ -25,12 +24,12 @@ export class Signup extends Component {
       userName: '',
       email: '',
       password: '',
-      confirmPassword: '',
+      confirmPassword: ''
     },
-    errors: {},
+    errors: {}
   };
 
-  getValidationErrorMessages = (error) => {
+  getValidationErrorMessages = error => {
     const validationErrors = {};
     const errorDetails = error.details;
     const errorsLength = errorDetails.length;
@@ -57,14 +56,10 @@ export class Signup extends Component {
   renderSignupError = () => {
     const { errors } = this.state;
     const {
-      signup: { error },
+      signup: { error }
     } = this.props;
 
     this.setState({ errors: { ...errors, signup: error } });
-  };
-
-  redirectUserToProfilePage = () => {
-    window.location = '/profile';
   };
 
   handleChange = ({ target }) => {
@@ -77,13 +72,13 @@ export class Signup extends Component {
     this.setState({ errors: { ...errors, [target.name]: '' } });
   };
 
-  handleSubmit = async (event) => {
+  handleSubmit = async event => {
     event.preventDefault();
     const { data: user } = this.state;
 
     const validationErrors = this.validateInputs();
     this.setState({
-      errors: validationErrors || {},
+      errors: validationErrors || {}
     });
 
     if (validationErrors) return null;
@@ -92,7 +87,10 @@ export class Signup extends Component {
 
     const { signup } = this.props;
     if (signup.error) this.renderSignupError();
-    if (signup.signedUp) this.redirectUserToProfilePage();
+    if (signup.signedUp) {
+      this.props.authUser();
+      this.props.history.push('/profile');
+    }
   };
 
   /**
@@ -224,11 +222,12 @@ export class Signup extends Component {
 Signup.propTypes = {
   signup: PropTypes.object.isRequired,
   signupAction: PropTypes.func.isRequired,
+  authUser: PropTypes.func.isRequired
 };
 
 const mapStateToProps = ({ signup }) => ({ signup });
 
 export default connect(
   mapStateToProps,
-  { signupAction }
+  { signupAction, authUser }
 )(Signup);

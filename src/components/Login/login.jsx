@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { login } from '../../actions/user/login';
+import { authUser } from '../../actions/auth';
 import {
   Input, Form, Button, SocialLogin
 } from '../common';
@@ -30,9 +31,9 @@ export class Login extends Component {
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
-  }
+  };
 
-  handleFocus =() => {
+  handleFocus = () => {
     this.setState({ errors: { userLogin: '', password: '', server: '' } });
   }
 
@@ -46,7 +47,10 @@ export class Login extends Component {
        await this.props.login(userLogin, password);
        const { error, history: { push } } = this.props;
        this.setState({ errors: { server: error } });
-       if (!error) push('/');
+       if (!error) {
+         this.props.authUser();
+         push('/'); 
+}
      }
    }
 
@@ -133,11 +137,15 @@ Login.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   error: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
-  login: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired
 };
 
 export const mapState = (state) => state.loginReducer;
 const actionCreators = {
-  login
+  login,
+  authUser
 };
-export default connect(mapState, actionCreators)(Login);
+export default connect(
+  mapState,
+  actionCreators
+)(Login);

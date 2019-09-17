@@ -1,6 +1,5 @@
 import sinon from 'sinon';
 import Home from './Home';
-
 describe('Home component test', () => {
   const url = '/?token=weHackedIt&username=odogwuRambo';
   beforeEach(() => history.replaceState({}, 'Home', url));

@@ -4,6 +4,8 @@ import TopNav from './TopNav';
 const setup = (propsOverride) => {
   const props = {
     user: {},
+    deAuthUser: jest.fn(),
+    isAuthenticated: true,
     ...propsOverride,
   };
   const wrapper = shallow(<TopNav {...props} />);
@@ -28,7 +30,19 @@ describe('TopNav Component', () => {
       'props',
       TopNav.name
     );
-
     expect(propsError).toBeUndefined();
+  });
+
+  it('logs user out when they click on the log out button', () => {
+    const props = {
+      user: {
+        avatarUrl: 'https://cloudinary.rambo.com'
+      },
+      deAuthUser: jest.fn(),
+      isAuthenticated: true,
+    };
+    const wrapper = shallow(<TopNav {...props}/>);
+    wrapper.find('span').simulate('click');
+    expect(props.deAuthUser).toHaveBeenCalled();
   });
 });

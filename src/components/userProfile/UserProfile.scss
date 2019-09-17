@@ -1,0 +1,51 @@
+@import '../../styles/index.scss';
+.profile__container {
+  display: flex;
+  
+}
+
+aside{
+  width: 234px;
+  height: 900px;
+}
+
+.User__data{
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.focus{
+  border: 1px solid black;
+}
+
+.option a{
+  border: 1px solid grey;
+}
+
+.hide{
+  display: none;
+}
+.warning{
+  left: 50%;
+  margin-left: -20px;
+  top: 50%;
+  margin-top: -20px;
+  position: absolute;
+}
+
+.warning div{
+position: relative;
+left: -40px;
+}
+
+
+@media (max-width: 768px) {
+  .profile__container{
+    display: flex;
+    flex-direction: column;
+  }
+  aside{
+    width: 100%;
+    height: auto;
+  }
+}

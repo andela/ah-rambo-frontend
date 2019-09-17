@@ -2,7 +2,6 @@ import * as actionTypes from '../../actionTypes';
 import fetchData from '../../helpers';
 import { setToStorage } from '../../helpers/storageHelper';
 
-
 export const request = () => ({ type: actionTypes.LOGIN_REQUEST });
 export const success = (user) => ({ type: actionTypes.LOGIN_SUCCESS, user });
 export const failure = (error) => ({ type: actionTypes.LOGIN_FAILURE, error });

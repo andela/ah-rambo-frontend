@@ -1,5 +1,6 @@
 @import 'variables.scss';
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Quicksand&display=swap');
+
 
 $font-family-base: 'Montserrat', sans-serif;
 
@@ -42,7 +43,6 @@ ol {
 a {
   text-decoration: none;
   color: inherit;
-  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .form-field {

@@ -2,7 +2,7 @@ import fetchData from '../../helpers/index';
 import {
   SIGNUP_REQUEST,
   SIGNUP_SUCCESS,
-  SIGNUP_FAILURE,
+  SIGNUP_FAILURE
 } from '../../actionTypes';
 import { setToStorage } from '../../helpers/storageHelper';
 

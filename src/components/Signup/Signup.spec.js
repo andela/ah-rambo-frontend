@@ -7,6 +7,7 @@ const setup = (propsOverride) => {
   const props = {
     signup: {},
     signupAction: jest.fn(),
+    authUser: jest.fn(),
     ...propsOverride,
   };
 
